@@ -1,0 +1,578 @@
+@mixin media($size)
+    @media screen and (max-width:#{$size}px)
+        @content
+
+html
+    font-size: 1px
+    scroll-behavior: smooth
+
+body
+    margin: 0
+    font-size: 16rem
+    font-family: montserrat
+    scroll-behavior: smooth
+
+a
+    text-decoration: none
+
+    /*&:hover
+     cursor: pointer, url('../img/cursors/star.cur')*/
+
+@import component/variables
+
+ul, li
+    padding: 0
+    list-style: none
+
+.burMenu
+    width: 25rem
+    height: 25rem
+    border: 5rem solid blue
+    display: none
+
+    +media(568px)
+        display: block
+
+/*-----------TOP-----------*/
+
+.top
+    position: relative
+    color: white
+    background-image: url(../img/about/wall.jpg)
+    background-position: center
+    filter: contrast(120%)
+    background-size: 90%
+
+    &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        opacity: 0.451
+        z-index: 1
+        background-size: cover
+        background-color: #000
+
+.wrapper
+    padding: 0 200px
+    position: relative
+    z-index: 2
+
+hr
+    width: 50px
+    border: 1px #555 solid
+
+.topmenu
+    display: flex
+    justify-content: space-around
+    align-items: center
+    color: white
+    padding-top: 40px
+    padding-bottom: 200px
+
+.menul
+    display: flex
+
+.menu li
+    padding: 0 25px
+
+.menu a
+    display: inline-block
+    color: white
+    transition: 1s all ease
+
+    &:hover
+        transform: scale(1.2)
+        text-shadow: 10px 2px 2px #7b241c
+
+.midtop
+    text-align: center
+    color: white
+    padding-bottom: 260px
+
+.midtop h1
+    font-size: 48px
+    padding-bottom: 30px
+    text-transform: uppercase
+
+.midtop p
+    padding-bottom: 40px
+
+.midtop a
+    border: 1px solid white
+    padding: 15px 20px
+    text-transform: uppercase
+    color: white
+
+/*-----------MIDDLE----------*/
+
+.middle
+    text-align: center
+    padding-top: 100px
+    color: #555
+    & h2
+        text-transform: uppercase
+        margin-bottom: 30px
+    & p
+        padding: 30px 0 0
+
+.offercards
+    display: flex
+    padding: 30px 0 100px
+
+    & h3
+        text-transform: uppercase
+        padding: 25px 0
+    & img
+        padding: 25px 0
+    & p
+        padding: 25px 0
+
+.cardoff
+    margin: 0 40px
+
+.middlex
+    padding-top: 100px
+    background-color: #f8f8f8
+
+.midtx
+    display: flex
+    align-items: center
+    text-align: left
+
+    & .one,
+    & .two
+        padding: 30px
+
+.slider
+    padding-top: 70px
+    padding-bottom: 100px
+
+.sl
+    display: flex
+
+    & div
+        margin: 0 auto
+
+/*-----------RECENT BLOG-----------*/
+
+.middbottom
+    & h2
+        text-align: center
+        text-transform: uppercase
+        margin: 0
+        padding-top: 100px
+        padding-bottom: 30px
+
+.blogp
+    text-align: center
+    font-family: "Roboto Slab"
+    margin: 0
+    padding-top: 30px
+    padding-bottom: 70px
+
+.blog
+    display: flex
+    text-align: left
+    column-gap: 40px
+    margin: 0 230px 77px
+
+.blogtx
+   /* display: flex*/
+
+.blogtitle
+    display: flex
+    column-gap: 30px
+
+    & h4
+        font-size: 16px
+        text-transform: uppercase
+        color: $primaryred
+        font-weight: 400
+        font-family: "Montserrat"
+        text-align: center
+        margin-bottom: 0
+
+    & p
+        font-size: 13px
+        color: #777777
+        font-weight: 400
+        font-family: "Roboto Slab"
+        font-style: italic
+
+.blogdate
+    display: inline-block
+    width: 76px
+    height: 76px
+    background-color: #f8f8f8
+    border: 2px solid #555555
+    color: #777
+    text-align: center
+    padding: 12px 20px
+    width: min-content
+    box-sizing: border-box
+
+    & strong
+        display: block
+        font-size: 24px
+
+    & span
+        text-transform: uppercase
+        letter-spacing: 2px
+        font-family: "Montserrat"
+
+.readmore
+    text-transform: uppercase
+    color: $primaryred
+    font-weight: 700
+    font-family: "Roboto Slab"
+    text-align: center
+
+.txmore
+    display: none
+
+.txshow
+    display: block
+
+/*-----------LATEST WORK-----------*/
+
+.latestw
+    text-align: center
+    margin-top: 100px
+
+    & h2
+        text-transform: uppercase
+        color: #555
+        margin-bottom: 30px
+        text-align: center
+
+.ltmenu
+    display: flex
+    justify-content: center
+
+    & li
+        padding: 0 15px
+        margin: 30px 0 70px 0
+
+    & a
+        font-family: "Roboto Slab"
+        color: #555
+        transition: 1s all ease
+
+        &:hover
+            color: $primaryred
+
+.workimg
+    display: flex
+    flex-wrap: wrap
+    margin: 0 auto
+    column-gap: 30px
+    max-width: 1140px
+
+.workcard
+    position: relative
+    margin-bottom: 30px
+
+.workhover
+    position: absolute
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    color: white
+    background-color: $primaryred
+    opacity: 0
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    transition: 1s all ease
+
+    &:hover
+        opacity: 0.702
+
+    & h4
+        margin: 0
+
+    & a
+        color: $primaryred
+        border: 5px solid white
+        background-color: white
+        text-transform: uppercase
+        width: 100px
+        height: 40px
+        text-align: center
+        padding: 6px 10px
+        box-sizing: border-box
+        font-family: "Roboto Slab"
+
+    & p
+        margin-top: 30px
+        margin-bottom: 30px
+        font-family: "Roboto Slab"
+        font-size: 12px
+
+    & img
+        background-size: contain
+
+/*-----------MAIN BANNER-----------*/
+
+.mainbanner
+    background-image: url(../img/banner.png)
+    height: 370px
+    text-align: center
+
+    & h2
+        color: white
+        font-size: 30px
+        max-width: 480px
+        padding: 100px 0 50px
+        margin: 0 auto
+        font-weight: 400
+        font-family: "Roboto Slab"
+        text-align: center
+
+    & a
+        display: inline
+        border: 1px solid #fff
+        padding: 15px 20px
+        text-transform: uppercase
+        color: #fff
+        margin: 0 auto
+
+.bottomslide
+    background-color: #f8f8f8
+    margin-top: 23px
+    height: 475px
+    width: 100%
+    text-align: center
+
+.logosliders
+    display: flex
+    align-items: center
+    justify-content: center
+
+    & img
+        margin: 105px 60px 75px
+
+.slide
+    color: #555
+    font-weight: 400
+    font-family: "Roboto Slab"
+    font-style: italic
+    text-align: center
+    margin: 0px 610px 30px
+
+.john
+    color: #555
+    font-weight: 400
+    font-family: "Roboto Slab"
+    font-size: 18px
+
+/*-----------CONTACTS-----------*/
+
+.contactsmain
+    display: flex
+    justify-content: space-between
+
+.contacts
+    padding: 100px 230px
+
+    & h2
+        text-transform: uppercase
+        color: #555
+        padding-bottom: 25px
+        text-align: center
+
+    .contp
+        padding: 30px 0 70px 0
+        text-align: center
+        color: #555
+        font-weight: 400
+        font-family: "Roboto Slab"
+
+.firstlevel input,
+.secondlevel input
+    width: 350px
+    height: 45px
+    border: 1px #555 solid
+    color: #555
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.form
+    & input,
+    textarea
+        display: block
+        margin: 10px 15px
+        padding-left: 15px
+        box-sizing: border-box
+        text-transform: uppercase
+
+textarea
+    min-height: 100px
+    max-height: 100px
+    max-width: 730px
+    min-width: 730px
+    border: 1px #555 solid
+    color: #555
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.firstlevel,
+.secondlevel,
+.btnblock
+    display: flex
+    align-items: center
+
+.btnblock p
+    color: #555
+    font-weight: 400
+    margin: 0 28px
+    font-family: "Roboto Slab"
+
+    & span
+        color: $primaryred
+
+.btnblock input
+    width: 170px
+    height: 45px
+    background-color: transparent
+    border: 1px #555 solid
+    text-transform: uppercase
+    color: #555
+    transition: 1s all ease
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.cont
+    color: #555
+
+    & h4
+        text-transform: uppercase
+
+    & p 
+        margin: 0 0 0 27px
+
+.cardcont 
+    margin: 0 0 15px 0
+
+.imgcont
+    display: flex
+    align-items: center
+
+    & img
+        margin: 0 15px 0 0
+
+/*-----------DIALOG-----------*/
+
+.dialog
+    position: fixed
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    backdrop-filter: blur(2px)
+    display: none
+    justify-content: center
+    align-items: center
+
+.dialogbox
+    width: 350px
+    height: 400px
+    background-color: white
+    color: #7b241c
+    padding: 15px
+    border: 1px solid #7b241c
+    text-align: center
+
+    & h3
+        color: #7b241c
+        padding: 5px
+        text-align: center
+
+    label
+        position: relative
+
+    input
+        margin: 15px 0
+        padding: 5px
+        width: 100%
+        box-sizing: border-box
+        border: 1px solid #7b241c
+
+    input:valid + span
+        left: 0
+        top: -20px
+        font-size: 10px
+        opacity: 1
+
+    .mButt
+        display: flex
+        align-items: center
+        justify-content: space-around
+        margin-top: 10px
+
+        a
+            margin-top: 25px
+            border: 1px solid #7b241c
+            padding: 5px 10px
+            text-transform: uppercase
+            color: #7b241c
+
+            &:hover
+                border: 1px solid #7b241c
+                background-color: #7b241c
+                color: white
+
+    span
+        position: absolute
+        top: 10px
+        left: 10px
+        opacity: 0
+        transition: 1s all ease
+
+/*-----------FOOTER-----------*/
+
+.footer
+    text-align: center
+    height: 307px
+    width: 100%
+    color: white
+    padding-top: 100px
+    background-color: $primaryred
+
+    & p
+        text-transform: uppercase
+        color: #ffffff
+        font-weight: 400
+        font-family: "Roboto Slab"
+        margin: 0
+        padding-top: 30px
+
+.foot
+    width: 50px
+    border: 1px #fff solid
+
+.social
+    display: flex
+    justify-content: center
+
+.media
+    background-image: url(../img/tw.png)
+    width: 37px
+    height: 36px
+    background-size: cover
+    margin: 0 15px 30px 15px
+    transition: $transition
+
+    &:hover
+        transform: scale(1.1)

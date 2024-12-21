@@ -1,0 +1,118 @@
+include component/mixin
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title startup
+        link(rel="stylesheet" href="css/styles.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Maven+Pro&family=Montserrat:wght@500&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet")
+
+    body 
+
+        header.top#home
+            .wrapper 
+                .topmenu 
+                    .logo 
+                        h1 Startup 
+                    .menu
+                        +menu(topmenu)
+                .midtop 
+                    h1 Welcome to startup
+                    p Your Favourite Creative Agency Template
+                    a(href="#").butt get started
+        main.middle#services
+            .wrapper 
+                h2 Services
+                hr
+                p We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+                +offercards(cards)
+            .middlex#about 
+                .wrapper
+                    h2 About us
+                    hr
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+                    .midtx 
+                        p.one Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
+                        p.two Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+                    .slider 
+                        +imgslide(slide)
+                        //slider js
+        .latestw#works 
+            .wrapper 
+                h2 Latest works
+                hr
+                +latestmenu(latest)
+
+                .works
+                    +workimg(work)
+
+        .mainbanner 
+            h2 Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
+            a(href="#getInTouch").butt Get in Touch
+
+        .middbottom#blog 
+            h2 Recent blog posts
+            hr
+            p.blogp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+            +bottomcard(botcards)
+
+        .bottomslide#clients 
+            +logoslide(logo)
+            p.slide  Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+            p.john John Doe, Google Inc.
+
+        .contacts#contact
+            h2#getInTouch Get in touch
+            hr
+            p.contp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+            .contactsmain 
+                .contact
+                    +add(cont)
+
+                form(action="#" method="post").form 
+                    .firstlevel 
+                        input(type="text" name="username")
+                        input(type="text" name="e-mail")
+                    .secondlevel
+                        input(type="text" name="subject")
+                        input(type="text" name="company")
+                    textarea(name="message").txarea 
+                    .btnblock
+                        input(type="submit" value="send message" id="appload")
+                        p <span>*</span> We’ll contact you as as possible. We don’t reply on Monday.
+
+        .dialog 
+            .dialogbox
+                h3 Hi! Please fill in this form if you want to get a support)
+                form(action="#")
+
+                    label
+                        input(type="text" required placeholder="Last name")
+                        span Last name
+
+                    label
+                        input(type="text" required placeholder="Fist name") 
+                        span First name
+
+                    label
+                        input(type="text" required placeholder="Number of phone") 
+                        span Number of phone
+
+                .mButt
+                    a(href="/").cor Confirm
+                    a(href="/").can Cancel
+
+        footer.footer 
+            .social 
+                a(href="#").media
+                a(href="#").media
+                a(href="#").media
+                a(href="#").media
+            hr.foot
+            p © 2015 Startup, Designed by ShapedTheme
+
+        script(src="js/scripts.js")             
