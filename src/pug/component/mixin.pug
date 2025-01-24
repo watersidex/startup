@@ -33,16 +33,16 @@ mixin menu (items)
 -
     let cards = [
         {
-            img: 'img/about/clean.png',
             name: 'Clean Typography', 
+            img: 'img/about/clean.png',
             p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
         }, {
-            img: 'img/about/code.png',
             name: 'Rock Solid Code', 
+            img: 'img/about/code.png',
             p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
         }, {
-            img: 'img/about/support.png',
             name: 'Expert Support', 
+            img: 'img/about/support.png',
             p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
         }
     ];
@@ -51,8 +51,9 @@ mixin offercards (items)
     div.offercards 
         for item in items 
             div.cardoff
-                h3 #{item.name}
-                img(src=item.img)
+                div.fix
+                    h3 #{item.name}
+                    img(src=item.img)
                 p #{item.p}
 
 -
@@ -99,15 +100,15 @@ mixin imgslide (items)
                 img(src=item.img)
                 h4 #{item.name}
                 p #{item.job}
-                ul
+                ul.social
                     li 
-                        a(href=item.facebook) 
+                        a(href=item.facebook).link.facebook 
                     li 
-                        a(href=item.twitter)
+                        a(href=item.twitter).link.twitter
                     li 
-                        a(href=item.googlePlus)
+                        a(href=item.googlePlus).link.googlePlus
                     li 
-                        a(href=item.linkedIn)
+                        a(href=item.linkedIn).link.linkedIn
 -
     let latest = [
         {
@@ -148,37 +149,37 @@ mixin latestmenu (items)
         },{
             img: 'img/works/it.png',
             name: 'IT',
-            p: 'Branding',
+            p: 'Design',
             btn: 'view >'
         },{
             img: 'img/works/photo.png',
             name: 'Photographer',
-            p: 'Branding',
+            p: 'Design',
             btn: 'view >'
         },{
             img: 'img/works/bicycle.png',
-            name: 'bicycle',
-            p: 'Strategy',
+            name: 'Cycling manager',
+            p: 'Development',
             btn: 'view >'
         },{
             img: 'img/works/teacher.png',
-            name: 'teacher',
-            p: 'Branding',
+            name: 'Freelancer',
+            p: 'Development',
             btn: 'view >'
         },{
             img: 'img/works/note.png',
-            name: 'note',
-            p: 'Branding',
+            name: 'Office manager',
+            p: 'Strategy',
             btn: 'view >'
         },{
             img: 'img/works/geom.png',
-            name: 'geom',
-            p: 'Branding',
+            name: 'Tutor',
+            p: 'Strategy',
             btn: 'view >'
         },{
             img: 'img/works/shop.png',
-            name: 'shop',
-            p: 'Branding',
+            name: 'Advertiser',
+            p: 'Design',
             btn: 'view >'
         }
     ];
@@ -285,6 +286,30 @@ mixin add (items)
                     h4 #{item.name}
                 p #{item.first}
                 p #{item.second}
+-
+    let media = [
+        {
+            img: 'img/footer/facebookb.png'
+
+        },
+        {
+            img: 'img/footer/twitterb.png'
+
+        },
+        {
+            img: 'img/footer/googlePlusb.png'
+
+        },
+        {
+            img: 'img/footer/linkedinb.png'
+
+        }
+    ];
+
+mixin foot (items)
+    for item in items 
+        .media
+            img(src=item.img)
 
 
 

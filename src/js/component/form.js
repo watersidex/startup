@@ -1,3 +1,4 @@
+
 let btn = document.querySelector("#appload")
 let inputs = document.querySelectorAll("input")
 let tx = document.querySelector(".txarea")
@@ -57,5 +58,20 @@ btn.onclick = (event) => {
     canc.onclick = () => {
         newter.style.display = "none"
         newter.remove ()
+    }
+
+    conf.onclick = (event) => {
+        let params = '?'
+        inputs.forEach( (element,index) => {
+            params += `${(index==0?'':"&")}${element.name}=${element.value}`;
+        });
+        params += `&message=${tx.value}`
+        alert(params)
+        newdialog.querySelector('h3').innerHTML = "message sent"
+        newdialog.querySelectorAll('p').forEach (e => e.remove())
+        conf.style.display = "none"
+        canc.innerText = 'OK'
+        let mytimer = setTimeout (canc.onclick, 7000)
+        fetch('http://localhost/dolphintg.php'+params).then(response=>console.log(response))
     }
 }

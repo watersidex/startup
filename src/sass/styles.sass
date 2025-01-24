@@ -1,10 +1,13 @@
 @mixin media($size)
-    @media screen and (max-width:#{$size}px)
+    @media screen and (min-width:#{$size}px)
         @content
 
 html
     font-size: 1px
     scroll-behavior: smooth
+
+    +media(2560)
+        font-size: 1.5px
 
 body
     margin: 0
@@ -35,7 +38,6 @@ ul, li
 
     +media(568px)
         display: block
-
 
 /*-----------RECENT BLOG-----------*/
 
@@ -132,10 +134,11 @@ ul, li
 .ltmenu
     display: flex
     justify-content: center
+    margin: 0
 
     & li
         padding: 0 15px
-        margin: 30px 0 70px 0
+        margin: 25px 0 74px 0
 
     & a
         font-family: "Roboto Slab"
@@ -151,6 +154,7 @@ ul, li
     margin: 0 auto
     column-gap: 30px
     max-width: 1140px
+    padding-bottom: 100px
 
 .workcard
     position: relative
@@ -218,7 +222,7 @@ ul, li
     & a
         display: inline
         border: 1px solid #fff
-        padding: 15px 20px
+        padding: 15px 30px
         text-transform: uppercase
         color: #fff
         margin: 0 auto
@@ -257,6 +261,9 @@ ul, li
 .contactsmain
     display: flex
     justify-content: space-between
+
+.contact p
+    font-family: "Roboto Slab"
 
 .contacts
     padding: 135px 230px
@@ -299,6 +306,8 @@ textarea
     max-height: 100px
     max-width: 730px
     min-width: 730px
+    padding-top: 15px
+
     border: 1px #555 solid
     color: #555
 
@@ -340,10 +349,10 @@ textarea
     & h4
         text-transform: uppercase
 
-    & p 
+    & p
         margin: 0 0 0 27px
 
-.cardcont 
+.cardcont
     margin: 0 0 15px 0
 
 .imgcont
@@ -371,6 +380,8 @@ textarea
     height: 400px
     background-color: white
     color: #7b241c
+    margin: 0 auto
+    margin-top: 50px
     padding: 15px
     border: 1px solid #7b241c
     text-align: center
@@ -379,6 +390,8 @@ textarea
         color: #7b241c
         padding: 5px
         text-align: center
+        text-transform: uppercase
+        margin: 43px 0 35px 0
 
     label
         position: relative
@@ -413,6 +426,14 @@ textarea
                 border: 1px solid #7b241c
                 background-color: #7b241c
                 color: white
+
+    p
+        color: #555
+        text-align: left
+        padding-left: 40px
+
+    em
+        color: $primaryred
 
     span
         position: absolute
