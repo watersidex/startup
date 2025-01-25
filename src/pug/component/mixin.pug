@@ -96,7 +96,7 @@ mixin offercards (items)
 mixin imgslide (items)
     div.sl 
         for item in items 
-            div
+            div.divsl
                 img(src=item.img)
                 h4 #{item.name}
                 p #{item.job}

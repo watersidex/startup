@@ -39,3 +39,57 @@ const quotes = [{
         author: "Theodore Roosevelt"
     }
 ];
+
+class Slider {
+    constructor(slidecont) {
+        this.slidecont = slidecont
+        this.slidecont.style.position = "relative"
+        this.slides = this.slidecont.querySelectorAll(".divsl")
+        this.slidecont.style.height = this.slidecont.getBoundingClientRect().height + "px"
+        this.sliderwidth = this.slidecont.getBoundingClientRect().width
+        this.slides.forEach(e => {
+            e.style.position = "absolute"
+        });
+        this.place()
+        this.move()
+    }
+    place() {
+        this.carddist = this.sliderwidth - this.slides[0].getBoundingClientRect().width * 4
+        this.slides.forEach((e, index) => {
+            e.style.left = (e.getBoundingClientRect().width + this.carddist / 3) * index + "px"
+
+        });
+    }
+
+    move() {
+        setInterval(() => {
+            let phantomsl = this.slides[0].cloneNode(true)
+            phantomsl.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 3) * 4 + "px"
+            slidecont.appendChild(phantomsl)
+            this.slides.forEach((e, index) => {
+                e.style.left = (e.getBoundingClientRect().width + this.carddist / 3) * (index - 1) + "px"
+
+            });
+            phantomsl.style.left = (phantomsl.getBoundingClientRect().width + this.carddist / 3) * 3 + "px"
+            setTimeout(() => {
+                this.slides[0].remove()
+                this.slides = this.slidecont.querySelectorAll(".divsl")
+
+            }, 2000)
+        }, 5000)
+    }
+}
+
+class EmpSlider extends Slider {
+    constructor(slidecont) {
+        super(slidecont)
+    }
+}
+
+class Quotes extends Slider {
+
+}
+
+let slidecont = document.querySelector(".sl")
+let emp = new EmpSlider(slidecont)
+console.log(emp)
