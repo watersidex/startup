@@ -1,15 +1,35 @@
 /*-----------TOP-----------*/
 
-let dialog = document.querySelector(".dialog")
+let logdialog = document.querySelector(".dialog")
 let butt = document.querySelector(".butt")
 let can = document.querySelector(".can")
 
 butt.onclick = () => {
-    dialog.style.display = "flex"
+    logdialog.style.display = "flex"
 }
 
 can.onclick = () => {
-    dialog.style.display = "none"
+    logdialog.style.display = "none"
+}
+
+/*-----------DIALOGBOX-----------*/
+
+let logswitch = document.querySelector(".logswitch strong")
+let dropzone = document.querySelector(".dropzone")
+
+dropzone.ondragover = () => {
+    //alert('u log')
+    dropzone.style.backgroundColor = "red"
+    //logswitch.style.top = "2px"
+    dropzone.appendChild (logswitch)
+}
+
+/*-----------VALIDATOR-----------*/
+
+let phonenum = document.querySelector("#phonenum")
+
+phonenum.oninput = () => {
+    phonenum.value = phonenum.value.replace(/[\D]/g,'')
 }
 
 /*-----------SERVICES-----------*/

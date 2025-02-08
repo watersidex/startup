@@ -13,7 +13,7 @@ html(lang="en")
                     .logo 
                         h1 Startup 
                     .menu
-                        +menu(topmenu)
+                        +menu(topmenu) 
                 .midtop 
                     h1 Welcome to startup
                     p Your Favourite Creative Agency Template
@@ -87,16 +87,20 @@ html(lang="en")
                 form(action="#")
 
                     label
-                        input(type="text" required placeholder="Last name")
+                        input(type="text" name="Lastname" required placeholder="Last name")
                         span Last name
 
                     label
-                        input(type="text" required placeholder="Fist name") 
+                        input(type="text" name="Firstname" required placeholder="Fist name") 
                         span First name
 
                     label
-                        input(type="text" required placeholder="Number of phone") 
+                        input(type="text" name="number" id="phonenum" required placeholder="Number of phone") 
                         span Number of phone
+
+                    .logswitch 
+                        strong(draggable="true")
+                        .dropzone
 
                 .mButt
                     a(href="/").cor Confirm

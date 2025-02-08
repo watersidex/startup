@@ -54,9 +54,11 @@ class Slider {
         this.move()
     }
     place() {
-        this.carddist = this.sliderwidth - this.slides[0].getBoundingClientRect().width * 4
+        this.carddist = this.sliderwidth - this.slides[0].getBoundingClientRect().width * 4 
+        console.log(getComputedStyle(this.slides[0]).width)
+        console.log(this.slides[0].getBoundingClientRect().width)
         this.slides.forEach((e, index) => {
-            e.style.left = (e.getBoundingClientRect().width + this.carddist / 3) * index + "px"
+            e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 3) * index + "px"
 
         });
     }
@@ -64,13 +66,13 @@ class Slider {
     move() {
         setInterval(() => {
             let phantomsl = this.slides[0].cloneNode(true)
-            phantomsl.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 3) * 4 + "px"
+            phantomsl.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * 5 + "px"
             slidecont.appendChild(phantomsl)
             this.slides.forEach((e, index) => {
-                e.style.left = (e.getBoundingClientRect().width + this.carddist / 3) * (index - 1) + "px"
+                e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 1) + "px"
 
             });
-            phantomsl.style.left = (phantomsl.getBoundingClientRect().width + this.carddist / 3) * 3 + "px"
+            phantomsl.style.left = (phantomsl.getBoundingClientRect().width + this.carddist / 4) * 4 + "px"
             setTimeout(() => {
                 this.slides[0].remove()
                 this.slides = this.slidecont.querySelectorAll(".divsl")
