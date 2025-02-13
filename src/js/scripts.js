@@ -16,12 +16,42 @@ can.onclick = () => {
 
 let logswitch = document.querySelector(".logswitch strong")
 let dropzone = document.querySelector(".dropzone")
+let diinputs = document.querySelectorAll(".dialogbox input[type='text']")
 
 dropzone.ondragover = () => {
     //alert('u log')
-    dropzone.style.backgroundColor = "red"
-    //logswitch.style.top = "2px"
+    dropzone.parentElement.style.backgroundColor = "#7b241c"
+    logswitch.style.top = "2px"
+    logswitch.style.backgroundColor = "white"
     dropzone.appendChild (logswitch)
+}
+
+let cor = document.querySelector(".cor")
+let welcome = document.querySelector(".welcome")
+cor.onclick = (event) => {
+    event.preventDefault()
+    let subwaykeys = 0 
+    diinputs.forEach(element => {
+        if (element.value.length < 3 && element.value.length > 15) {
+            element.focus()
+            element.style.borderColor = "red"
+            subwaykeys = 0
+            return 
+        } else {
+            element.style.borderColor = "grey"
+            subwaykeys+=1
+        }           
+    });
+  
+    if (logswitch.style.backgroundColor == "white") {
+        subwaykeys+=1
+    }
+
+    if (subwaykeys == 4) {
+        logdialog.style.display = "none"
+        welcome.innerText = "welcome " + diinputs[0].value +" "+ diinputs[1].value +"!)"
+        alert("u log in")
+    }
 }
 
 /*-----------VALIDATOR-----------*/
@@ -30,6 +60,10 @@ let phonenum = document.querySelector("#phonenum")
 
 phonenum.oninput = () => {
     phonenum.value = phonenum.value.replace(/[\D]/g,'')
+}
+
+diinputs[0].onkeyup = function () {
+    diinputs[0].value = diinputs[0].value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
 }
 
 /*-----------SERVICES-----------*/
