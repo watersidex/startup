@@ -23,33 +23,33 @@ dropzone.ondragover = () => {
     dropzone.parentElement.style.backgroundColor = "#7b241c"
     logswitch.style.top = "2px"
     logswitch.style.backgroundColor = "white"
-    dropzone.appendChild (logswitch)
+    dropzone.appendChild(logswitch)
 }
 
 let cor = document.querySelector(".cor")
 let welcome = document.querySelector(".welcome")
 cor.onclick = (event) => {
     event.preventDefault()
-    let subwaykeys = 0 
+    let subwaykeys = 0
     diinputs.forEach(element => {
-        if (element.value.length < 3 && element.value.length > 15) {
+        if (element.value.length < 15 && element.value.length > 3) {
             element.focus()
             element.style.borderColor = "red"
             subwaykeys = 0
-            return 
+            return
         } else {
             element.style.borderColor = "grey"
-            subwaykeys+=1
-        }           
+            subwaykeys += 1
+        }
     });
-  
+
     if (logswitch.style.backgroundColor == "white") {
-        subwaykeys+=1
+        subwaykeys += 1
     }
 
     if (subwaykeys == 4) {
         logdialog.style.display = "none"
-        welcome.innerText = "welcome " + diinputs[0].value +" "+ diinputs[1].value +"!)"
+        welcome.innerText = "welcome " + diinputs[0].value + " " + diinputs[1].value + "!)"
         alert("u log in")
     }
 }
@@ -57,14 +57,29 @@ cor.onclick = (event) => {
 /*-----------VALIDATOR-----------*/
 
 let phonenum = document.querySelector("#phonenum")
+let lastname = document.querySelector("#lastname")
+let firstname = document.querySelector("#firstname")
 
 phonenum.oninput = () => {
-    phonenum.value = phonenum.value.replace(/[\D]/g,'')
+    phonenum.value = phonenum.value.replace(/[\D]/g, '')
 }
 
-diinputs[0].onkeyup = function () {
-    diinputs[0].value = diinputs[0].value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
+/*lastname.onkeyup = function () {
+    lastname.value = lastname.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
 }
+
+firstname.onkeyup = function () {
+    firstname.value = firstname.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
+}*/
+
+let validinp = [lastname, firstname]
+
+validinp.forEach(element => {
+    element.onkeyup = function () {
+        element.value = element.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
+    }
+
+});
 
 /*-----------SERVICES-----------*/
 
@@ -104,7 +119,7 @@ ltmenu.forEach(element => {
 let readmore = document.querySelectorAll(".readmore")
 let txmore = document.querySelectorAll(".txmore")
 
-readmore.forEach((element,index) => {
+readmore.forEach((element, index) => {
     element.onclick = (e) => {
         e.preventDefault()
         txmore[index].classList.toggle("txshow")
