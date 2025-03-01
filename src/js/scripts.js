@@ -32,7 +32,7 @@ cor.onclick = (event) => {
     event.preventDefault()
     let subwaykeys = 0
     diinputs.forEach(element => {
-        if (element.value.length < 15 && element.value.length > 3) {
+        if (element.value.length > 15 && element.value.length < 3) {
             element.focus()
             element.style.borderColor = "red"
             subwaykeys = 0

@@ -1,10 +1,15 @@
 
 let btn = document.querySelector("#appload")
-let inputs = document.querySelectorAll("input")
+let inputs = document.querySelectorAll(".contactsmain input")
 let tx = document.querySelector(".txarea")
 inputs.forEach(input => {
     if (localStorage.getItem(input.name)) {
         input.value = localStorage.getItem(input.name)
+        if (input.name!="e-mail") {
+            input.onkeyup = function () {
+            input.value = input.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
+        }
+        }
     }
 
 })

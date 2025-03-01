@@ -54,7 +54,7 @@ class Slider {
         this.move()
     }
     place() {
-        this.carddist = this.sliderwidth - this.slides[0].getBoundingClientRect().width * 4 
+        this.carddist = this.sliderwidth - this.slides[0].getBoundingClientRect().width * 4
         console.log(getComputedStyle(this.slides[0]).width)
         console.log(this.slides[0].getBoundingClientRect().width)
         this.slides.forEach((e, index) => {
@@ -64,7 +64,7 @@ class Slider {
     }
 
     move() {
-        setInterval(() => {
+        this.slidertimer = setInterval(() => {
             let phantomsl = this.slides[0].cloneNode(true)
             phantomsl.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * 5 + "px"
             slidecont.appendChild(phantomsl)
@@ -86,6 +86,36 @@ class EmpSlider extends Slider {
     constructor(slidecont) {
         super(slidecont)
     }
+
+    move3L = () => {
+        clearInterval(this.slidertimer)
+        let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
+        arrayphantom.forEach((element, index) => {
+            element.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (5 + index) + "px"
+            slidecont.appendChild(element)
+            element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
+            this.slides.forEach((e, index) => {
+                e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 3) + "px"
+
+            });
+            setTimeout(() => {
+                this.slides[0].remove()
+                this.slides[1].remove()
+                this.slides[2].remove()
+                this.slides = this.slidecont.querySelectorAll(".divsl")
+
+            }, 2000)
+        });
+    }
+
+    setbuttons = (buttonL, buttonR) => {
+        buttonL.onclick = () => {
+            this.move3L()
+        }
+        buttonR.onclick = () => {
+            console.log('moveR')
+        }
+    }
 }
 
 class Quotes extends Slider {
@@ -95,3 +125,7 @@ class Quotes extends Slider {
 let slidecont = document.querySelector(".sl")
 let emp = new EmpSlider(slidecont)
 console.log(emp)
+
+let butL = document.querySelector(".arrowl")
+let butR = document.querySelector(".arrowr")
+emp.setbuttons(butL, butR)
