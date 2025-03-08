@@ -40,6 +40,10 @@ const quotes = [{
     }
 ];
 
+
+
+
+
 class Slider {
     constructor(slidecont) {
         this.slidecont = slidecont
@@ -87,6 +91,8 @@ class EmpSlider extends Slider {
         super(slidecont)
     }
 
+    clickProtector = false
+
     move3L = () => {
         clearInterval(this.slidertimer)
         let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
@@ -103,40 +109,56 @@ class EmpSlider extends Slider {
             this.slides[1].remove()
             this.slides[2].remove()
             this.slides = this.slidecont.querySelectorAll(".divsl")
+            this.clickProtector = false
+            this.move()
         }, 2000)
     }
 
     move3R = () => {
         clearInterval(this.slidertimer)
-        let arrayphantom = [this.slides[this.slides.length-3].cloneNode(true), this.slides[this.slides.length-2].cloneNode(true), this.slides[this.slides.length-1].cloneNode(true)]
+        let arrayphantom = [this.slides[this.slides.length - 1].cloneNode(true), this.slides[this.slides.length - 2].cloneNode(true), this.slides[this.slides.length - 3].cloneNode(true)]
         arrayphantom.forEach((element, index) => {
-            element.style.left = -(this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (index) + "px"
-            slidecont.insertAdjacentElement("afterbegin",element)
-            //element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
+            element.style.left = -(this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (index + 1) + "px"
+            slidecont.insertAdjacentElement("afterbegin", element)
+            element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (2 - index) + "px"
         });
         this.slides.forEach((e, index) => {
-            e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 4) + "px"
+            e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index + 3) + "px"
         });
         setTimeout(() => {
-            this.slides[this.slides.length-3].remove()
-            this.slides[this.slides.length-2].remove()
-            this.slides[this.slides.length-1].remove()
+            this.slides[this.slides.length - 3].remove()
+            this.slides[this.slides.length - 2].remove()
+            this.slides[this.slides.length - 1].remove()
             this.slides = this.slidecont.querySelectorAll(".divsl")
+            this.clickProtector = false
+            this.move()
         }, 2000)
     }
-    
     setbuttons = (buttonL, buttonR) => {
         buttonL.onclick = () => {
+        if (this.clickProtector == false) {
+            this.clickProtector = true
             this.move3L()
+        }            
         }
         buttonR.onclick = () => {
-           this.move3R()
+        if (this.clickProtector == false) {
+            this.clickProtector = true
+            this.move3R()
+        }        
         }
     }
 }
 
-class Quotes extends Slider {
 
+/*-----------QUOTES-----------*/
+
+
+class Quotes extends Slider {
+    constructor(slidecont, quotes) {
+        super(slidecont)
+        this.quotes = quotes
+    }
 }
 
 let slidecont = document.querySelector(".sl")
@@ -146,3 +168,6 @@ console.log(emp)
 let butL = document.querySelector(".arrowl")
 let butR = document.querySelector(".arrowr")
 emp.setbuttons(butL, butR)
+
+let slideqcont = document.querySelector(".logosliders")
+let qslide = new Quotes (slideqcont, quotes)
