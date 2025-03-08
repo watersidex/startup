@@ -108,12 +108,34 @@ class EmpSlider extends Slider {
         });
     }
 
+   /* move3R = () => {
+        clearInterval(this.slidertimer)
+        let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
+        arrayphantom.forEach((element, index) => {
+            element.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (5 + index) + "px"
+            slidecont.appendChild(element)
+            element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
+            this.slides.forEach((e, index) => {
+                e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 3) + "px"
+
+            });
+            setTimeout(() => {
+                this.slides[0].remove()
+                this.slides[1].remove()
+                this.slides[2].remove()
+                this.slides = this.slidecont.querySelectorAll(".divsl")
+
+            }, 2000)
+        });
+    }
+*/
     setbuttons = (buttonL, buttonR) => {
         buttonL.onclick = () => {
             this.move3L()
         }
         buttonR.onclick = () => {
-            console.log('moveR')
+           /* this.move3R() */
+           console.log("RRR")
         }
     }
 }
