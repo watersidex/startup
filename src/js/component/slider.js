@@ -94,48 +94,43 @@ class EmpSlider extends Slider {
             element.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (5 + index) + "px"
             slidecont.appendChild(element)
             element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
-            this.slides.forEach((e, index) => {
-                e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 3) + "px"
-
-            });
-            setTimeout(() => {
-                this.slides[0].remove()
-                this.slides[1].remove()
-                this.slides[2].remove()
-                this.slides = this.slidecont.querySelectorAll(".divsl")
-
-            }, 2000)
         });
+        this.slides.forEach((e, index) => {
+            e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 4) + "px"
+        });
+        setTimeout(() => {
+            this.slides[0].remove()
+            this.slides[1].remove()
+            this.slides[2].remove()
+            this.slides = this.slidecont.querySelectorAll(".divsl")
+        }, 2000)
     }
 
-   /* move3R = () => {
+    move3R = () => {
         clearInterval(this.slidertimer)
-        let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
+        let arrayphantom = [this.slides[this.slides.length-3].cloneNode(true), this.slides[this.slides.length-2].cloneNode(true), this.slides[this.slides.length-1].cloneNode(true)]
         arrayphantom.forEach((element, index) => {
-            element.style.left = (this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (5 + index) + "px"
-            slidecont.appendChild(element)
-            element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
-            this.slides.forEach((e, index) => {
-                e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 3) + "px"
-
-            });
-            setTimeout(() => {
-                this.slides[0].remove()
-                this.slides[1].remove()
-                this.slides[2].remove()
-                this.slides = this.slidecont.querySelectorAll(".divsl")
-
-            }, 2000)
+            element.style.left = -(this.slides[0].getBoundingClientRect().width + this.carddist / 4) * (index) + "px"
+            slidecont.insertAdjacentElement("afterbegin",element)
+            //element.style.left = (element.getBoundingClientRect().width + this.carddist / 4) * (1 + index) + "px"
         });
+        this.slides.forEach((e, index) => {
+            e.style.left = 45 + (e.getBoundingClientRect().width + this.carddist / 4) * (index - 4) + "px"
+        });
+        setTimeout(() => {
+            this.slides[this.slides.length-3].remove()
+            this.slides[this.slides.length-2].remove()
+            this.slides[this.slides.length-1].remove()
+            this.slides = this.slidecont.querySelectorAll(".divsl")
+        }, 2000)
     }
-*/
+    
     setbuttons = (buttonL, buttonR) => {
         buttonL.onclick = () => {
             this.move3L()
         }
         buttonR.onclick = () => {
-           /* this.move3R() */
-           console.log("RRR")
+           this.move3R()
         }
     }
 }
