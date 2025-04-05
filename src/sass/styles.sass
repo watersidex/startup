@@ -30,6 +30,8 @@ ul, li
     padding: 0
     list-style: none
 
+/*-----------BURGER MENU-----------*/
+
 .burMenu
 
     display: block
@@ -53,13 +55,18 @@ ul, li
     width: 200px
     height: max-content
     z-index: 4
-   //padding-top: 25vh
+    //padding-top: 25vh
     margin: 0 10px 0
     background-color: $primaryred
-
+    
     ul
         flex-direction: column
         align-items: flex-end
+
+.adaptive
+    flex-direction: column
+    +media (728)
+        flex-direction: row
 
 /*-----------RECENT BLOG-----------*/
 
@@ -81,7 +88,7 @@ ul, li
     display: flex
     text-align: left
     column-gap: 40px
-    margin: 0 230px 77px
+    margin: 0 0px 77px
 
 .blogtx
    /* display: flex*/
@@ -276,7 +283,8 @@ ul, li
     font-family: "Roboto Slab"
     font-style: italic
     text-align: center
-    margin: 0px 610px 40px
+    margin: 0px auto 40px
+    max-width: 800px
     transition: 1s all ease
 
 .john
@@ -310,13 +318,17 @@ ul, li
 
 .contactsmain
     display: flex
+    flex-direction: column
+    align-items: center
     justify-content: space-between
+    +media (1024)
+        flex-direction: row
 
 .contact p
     font-family: "Roboto Slab"
 
 .contacts
-    padding: 135px 230px
+    padding: 135px 0px
 
     & h2
         text-transform: uppercase
@@ -394,7 +406,11 @@ textarea
         color: #c0301c
 
 .cont
+    display: flex
+    flex-wrap: wrap
     color: #555
+    +media (1024)
+        display: block
 
     & h4
         text-transform: uppercase

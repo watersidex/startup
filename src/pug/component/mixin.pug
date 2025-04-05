@@ -48,7 +48,7 @@ mixin menu (items)
     ];
 
 mixin offercards (items)
-    div.offercards 
+    div.offercards.adaptive
         for item in items 
             div.cardoff
                 div.fix
@@ -227,7 +227,7 @@ mixin workimg (items)
 mixin bottomcard (items)
     .bottomcards
         for item in items 
-            .blog
+            .blog.adaptive
                 img(src=item.img)
                 .blogtx
                     .blogtitle

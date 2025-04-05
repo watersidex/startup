@@ -30,7 +30,7 @@ html(lang="en")
                     h2 About us
                     hr
                     p Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-                    .midtx 
+                    .midtx.adaptive
                         p.one Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
                         p.two Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
                     .slider 
@@ -46,14 +46,14 @@ html(lang="en")
                 hr
                 +latestmenu(latest)
 
-                .works
+                .works.adaptive
                     +workimg(work)
 
         .mainbanner 
             h2 Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
             a(href="#getInTouch").butt Get in Touch
 
-        .middbottom#blog 
+        .middbottom#blog.wrapper
             h2 Recent blog posts
             hr
             p.blogp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
@@ -68,11 +68,11 @@ html(lang="en")
                 .dot.active
                 .dot.active
 
-        .contacts#contact
+        .contacts#contact.wrapper
             h2#getInTouch Get in touch
             hr
             p.contp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
-            .contactsmain 
+            .contactsmain
                 .contact
                     +add(cont)
 
