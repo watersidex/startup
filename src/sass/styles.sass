@@ -1,0 +1,523 @@
+@mixin media($size)
+    @media screen and (min-width:#{$size}px)
+        @content
+
+html
+    font-size: 1px
+    scroll-behavior: smooth
+
+    +media(2560)
+        font-size: 1.5px
+
+body
+    margin: 0
+    font-size: 16rem
+    font-family: montserrat
+    scroll-behavior: smooth
+
+a
+    text-decoration: none
+
+    /*&:hover
+     cursor: pointer, url('../img/cursors/star.cur')*/
+
+@import component/variables
+@import component/header
+@import component/main
+@import component/footer
+
+ul, li
+    padding: 0
+    list-style: none
+
+.burMenu
+
+    display: block
+    width: 25rem
+    height: 25rem
+    //border: 5rem solid blue
+    background-image: url(../img/icons/open.svg)
+    background-size: cover
+
+    +media(568px)
+        display: none
+
+.burMenuOpen
+    background-image: url(../img/icons/close.svg)
+
+.burblock
+    position: absolute
+    display: block
+    top: 48px
+    right: -10px
+    width: 200px
+    height: max-content
+    z-index: 4
+   //padding-top: 25vh
+    margin: 0 10px 0
+    background-color: $primaryred
+
+    ul
+        flex-direction: column
+        align-items: flex-end
+
+/*-----------RECENT BLOG-----------*/
+
+.middbottom
+    & h2
+        text-align: center
+        text-transform: uppercase
+        margin: 0
+        padding-top: 100px
+        padding-bottom: 30px
+.blogp
+    text-align: center
+    font-family: "Roboto Slab"
+    margin: 0
+    padding-top: 30px
+    padding-bottom: 70px
+
+.blog
+    display: flex
+    text-align: left
+    column-gap: 40px
+    margin: 0 230px 77px
+
+.blogtx
+   /* display: flex*/
+
+.blogtitle
+    display: flex
+    column-gap: 30px
+
+    & h4
+        font-size: 16px
+        text-transform: uppercase
+        color: $primaryred
+        font-weight: 400
+        font-family: "Montserrat"
+        text-align: center
+        margin-bottom: 0
+
+    & p
+        font-size: 13px
+        color: #777777
+        font-weight: 400
+        font-family: "Roboto Slab"
+        font-style: italic
+
+.blogdate
+    display: inline-block
+    width: 76px
+    height: 76px
+    background-color: #f8f8f8
+    border: 2px solid #555555
+    color: #777
+    text-align: center
+    padding: 12px 20px
+    width: min-content
+    box-sizing: border-box
+
+    & strong
+        display: block
+        font-size: 24px
+
+    & span
+        text-transform: uppercase
+        letter-spacing: 2px
+        font-family: "Montserrat"
+
+.readmore
+    text-transform: uppercase
+    color: $primaryred
+    font-weight: 700
+    font-family: "Roboto Slab"
+    text-align: center
+
+.txmore
+    display: none
+
+.txshow
+    display: block
+
+/*-----------LATEST WORK-----------*/
+
+.latestw
+    text-align: center
+    margin-top: 100px
+
+    & h2
+        text-transform: uppercase
+        color: #555
+        margin-bottom: 30px
+        text-align: center
+
+.ltmenu
+    display: flex
+    justify-content: center
+    margin: 0
+
+    & li
+        padding: 0 15px
+        margin: 25px 0 74px 0
+
+    & a
+        font-family: "Roboto Slab"
+        color: #555
+        transition: 1s all ease
+
+        &:hover
+            color: $primaryred
+
+.workimg
+    display: flex
+    flex-wrap: wrap
+    margin: 0 auto
+    column-gap: 30px
+    max-width: 1140px
+    padding-bottom: 100px
+
+.workcard
+    position: relative
+    margin-bottom: 30px
+
+.workhover
+    position: absolute
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    color: white
+    background-color: $primaryred
+    opacity: 0
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    transition: 1s all ease
+
+    &:hover
+        opacity: 0.702
+
+    & h4
+        margin: 0
+
+    & a
+        color: $primaryred
+        border: 5px solid white
+        background-color: white
+        text-transform: uppercase
+        width: 100px
+        height: 40px
+        text-align: center
+        padding: 6px 10px
+        box-sizing: border-box
+        font-family: "Roboto Slab"
+
+    & p
+        margin-top: 30px
+        margin-bottom: 30px
+        font-family: "Roboto Slab"
+        font-size: 12px
+
+    & img
+        background-size: contain
+
+/*-----------MAIN BANNER-----------*/
+
+.mainbanner
+    background-image: url(../img/banner.png)
+    height: 370px
+    text-align: center
+    background-size: 110%
+
+    & h2
+        color: white
+        font-size: 30px
+        max-width: 480px
+        padding: 100px 0 50px
+        margin: 0 auto
+        font-weight: 400
+        font-family: "Roboto Slab"
+        text-align: center
+
+    & a
+        display: inline
+        border: 1px solid #fff
+        padding: 15px 30px
+        text-transform: uppercase
+        color: #fff
+        margin: 0 auto
+
+.bottomslide
+    background-color: #f8f8f8
+    margin-top: 23px
+    height: 475px
+    width: 100%
+    text-align: center
+
+.logosliders
+    overflow: hidden
+    margin: 0 auto
+    max-width: 910px
+    display: flex
+    align-items: center
+    justify-content: center
+
+    & img
+        display: block
+        width: 100px
+        margin: 105px 0 75px 0
+        transition: 1s all ease
+
+.slide
+    color: #555
+    font-weight: 400
+    font-family: "Roboto Slab"
+    font-style: italic
+    text-align: center
+    margin: 0px 610px 40px
+    transition: 1s all ease
+
+.john
+    color: #555
+    font-weight: 400
+    font-family: "Roboto Slab"
+    font-size: 18px
+    padding-bottom: 40px
+    margin: 0
+    transition: 1s all ease
+
+.dots
+    display: flex
+    margin: 0 auto
+    align-items: center
+    justify-content: center
+    column-gap: 6px
+
+.dot
+    width: 15px
+    height: 15px
+    background-color: #ddd
+    border: 1px solid #ddd
+    border-radius: 100%
+    transition: 1s all ease
+
+.active
+    background-color: #c0301c
+
+/*-----------CONTACTS-----------*/
+
+.contactsmain
+    display: flex
+    justify-content: space-between
+
+.contact p
+    font-family: "Roboto Slab"
+
+.contacts
+    padding: 135px 230px
+
+    & h2
+        text-transform: uppercase
+        color: #555
+        padding-bottom: 25px
+        text-align: center
+
+    .contp
+        padding: 30px 0 70px 0
+        text-align: center
+        color: #555
+        font-weight: 400
+        font-family: "Roboto Slab"
+
+.firstlevel input,
+.secondlevel input
+    width: 350px
+    height: 45px
+    border: 1px #555 solid
+    color: #555
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.form
+    & input,
+    textarea
+        display: block
+        margin: 10px 15px
+        padding-left: 15px
+        box-sizing: border-box
+        text-transform: uppercase
+
+textarea
+    min-height: 100px
+    max-height: 100px
+    max-width: 730px
+    min-width: 730px
+    padding-top: 15px
+
+    border: 1px #555 solid
+    color: #555
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.firstlevel,
+.secondlevel,
+.btnblock
+    display: flex
+    align-items: center
+
+.btnblock p
+    color: #555
+    font-weight: 400
+    margin: 0 28px
+    font-family: "Roboto Slab"
+
+    & span
+        color: $primaryred
+
+.btnblock input
+    width: 170px
+    height: 45px
+    background-color: transparent
+    border: 1px #555 solid
+    text-transform: uppercase
+    color: #555
+    transition: 1s all ease
+
+    &:hover
+        border: 1px #c0301c solid
+        color: #c0301c
+
+.cont
+    color: #555
+
+    & h4
+        text-transform: uppercase
+
+    & p
+        margin: 0 0 0 27px
+
+.cardcont
+    margin: 0 0 15px 0
+
+.imgcont
+    display: flex
+    align-items: center
+
+    & img
+        margin: 0 15px 0 0
+
+/*-----------DIALOG-----------*/
+
+.dialog
+    position: fixed
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    backdrop-filter: blur(2px)
+    display: none
+    justify-content: center
+    align-items: center
+
+.dialogbox
+    width: 350px
+    //height: 400px
+    background-color: white
+    color: #7b241c
+    margin: 0 auto
+    margin-top: 50px
+    padding: 15px
+    border: 1px solid #7b241c
+    text-align: center
+
+    & h3
+        color: #7b241c
+        padding: 5px
+        text-align: center
+        text-transform: uppercase
+        margin: 43px 0 35px 0
+
+    label
+        position: relative
+
+    input
+        margin: 15px 0
+        padding: 5px
+        width: 100%
+        box-sizing: border-box
+        border: 1px solid #7b241c
+
+    input:valid + span
+        left: 0
+        top: -20px
+        font-size: 10px
+        opacity: 1
+
+    .mButt
+        display: flex
+        align-items: center
+        justify-content: space-around
+        margin-top: 10px
+
+        a
+            margin-top: 25px
+            border: 1px solid #7b241c
+            padding: 5px 10px
+            text-transform: uppercase
+            color: #7b241c
+
+            &:hover
+                border: 1px solid #7b241c
+                background-color: #7b241c
+                color: white
+
+    p
+        color: #555
+        text-align: left
+        padding-left: 40px
+
+    em
+        color: $primaryred
+
+    span
+        position: absolute
+        top: 10px
+        left: 10px
+        opacity: 0
+        transition: 1s all ease
+
+    .logswitch
+        position: relative
+        border: 1px solid #7b241c
+        border-radius: 16px
+        height: 33px
+        margin-top: 30px
+        background-color: white
+
+        strong
+            position: absolute
+            top: 5px
+            left: 3px
+            display: inline-block
+            width: 20px
+            height: 20px
+            background-color: #7b241c
+            border: 1px solid #7b241c
+            border-radius: 50%
+
+        .dropzone
+            position: absolute
+            text-align: right
+            top: 3px
+            right: 3px
+            height: 25px
+            width: 25px
+            left: auto
+            background-color: transperent
+            //border: 1px solid #7b241c

@@ -1,0 +1,324 @@
+-
+    let topmenu = [
+        {
+            name: 'Home ',
+            url: '#home'
+            },{
+            name: 'Services ',
+            url: '#services'
+            },{
+            name: 'About ',
+            url: '#about'
+            },{
+            name: 'Works ',
+            url: '#works'
+            },{
+            name: 'Blog ',
+            url: '#blog'
+            },{
+            name: 'Clients ',
+            url: '#clients'
+            },{
+            name: 'Contact',
+            url: '#contact'
+        }
+    ];
+
+mixin menu (items)
+    ul.menul 
+        for item in items 
+            li 
+                a(href=item.url) #{item.name}
+
+-
+    let cards = [
+        {
+            name: 'Clean Typography', 
+            img: 'img/about/clean.png',
+            p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
+        }, {
+            name: 'Rock Solid Code', 
+            img: 'img/about/code.png',
+            p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
+        }, {
+            name: 'Expert Support', 
+            img: 'img/about/support.png',
+            p: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.',
+        }
+    ];
+
+mixin offercards (items)
+    div.offercards 
+        for item in items 
+            div.cardoff
+                div.fix
+                    h3 #{item.name}
+                    img(src=item.img)
+                p #{item.p}
+
+-
+    let slide = [
+        {
+            img: 'img/slider/person1.png',
+            name: 'Md. Khalil Uddin',
+            job: 'Head of Ideas',
+            facebook: '#',
+            twitter: '#',
+            googlePlus: '#',
+            linkedIn: '#',
+        },{
+            img: 'img/slider/person2.png',
+            name: 'Rubel Miah',
+            job: 'Lead WordPress Developer',
+            facebook: '#',
+            twitter: '#',
+            googlePlus: '#',
+            linkedIn: '#',
+        },{
+            img: 'img/slider/person3.png',
+            name: 'Shamim Mia',
+            job: 'Sr. Web Developer',
+            facebook: '#',
+            twitter: '#',
+            googlePlus: '#',
+            linkedIn: '#',
+        },{
+            img: 'img/slider/person4.png',
+            name: 'John Doe',
+            job: 'Front-end Developer',
+            facebook: '#',
+            twitter: '#',
+            googlePlus: '#',
+            linkedIn: '#',
+        },{
+            img: 'img/slider/person5.png',
+            name: 'Mike Blake',
+            job: 'Software Developer',
+            facebook: '#',
+            twitter: '#',
+            googlePlus: '#',
+            linkedIn: '#',
+        }
+    ]; 
+
+mixin imgslide (items)
+    div.sl 
+        for item in items 
+            div.divsl
+                img(src=item.img)
+                h4 #{item.name}
+                p #{item.job}
+                ul.social
+                    li 
+                        a(href=item.facebook).link.facebook 
+                    li 
+                        a(href=item.twitter).link.twitter
+                    li 
+                        a(href=item.googlePlus).link.googlePlus
+                    li 
+                        a(href=item.linkedIn).link.linkedIn
+-
+    let latest = [
+        {
+            name: 'All ',
+            url: '#'
+            },{
+            name: 'Branding ',
+            url: '#'
+            },{
+            name: 'Design ',
+            url: '#'
+            },{
+            name: 'Development ',
+            url: '#'
+            },{
+            name: 'Strategy ',
+            url: '#'
+            }
+    ];
+
+mixin latestmenu (items)
+    ul.ltmenu 
+        for item in items 
+            li 
+                a(href=item.url) #{item.name}
+-
+    let work =[
+        {
+            img: 'img/works/hairdresser.png',
+            name: 'Hair Dresser',
+            p: 'Branding',
+            btn: 'view >'
+        },{
+            img: 'img/works/delivery.png',
+            name: 'Delivery',
+            p: 'Branding',
+            btn: 'view >'
+        },{
+            img: 'img/works/it.png',
+            name: 'IT',
+            p: 'Design',
+            btn: 'view >'
+        },{
+            img: 'img/works/photo.png',
+            name: 'Photographer',
+            p: 'Design',
+            btn: 'view >'
+        },{
+            img: 'img/works/bicycle.png',
+            name: 'Cycling manager',
+            p: 'Development',
+            btn: 'view >'
+        },{
+            img: 'img/works/teacher.png',
+            name: 'Freelancer',
+            p: 'Development',
+            btn: 'view >'
+        },{
+            img: 'img/works/note.png',
+            name: 'Office manager',
+            p: 'Strategy',
+            btn: 'view >'
+        },{
+            img: 'img/works/geom.png',
+            name: 'Tutor',
+            p: 'Strategy',
+            btn: 'view >'
+        },{
+            img: 'img/works/shop.png',
+            name: 'Advertiser',
+            p: 'Design',
+            btn: 'view >'
+        }
+    ];
+
+mixin workimg (items)
+    .workimg
+        for item in items 
+            .workcard
+                img(src=item.img)
+                .workhover
+                    h4 #{item.name}
+                    p #{item.p}
+                    a(href='#') #{item.btn}
+-
+    let botcards =[
+        {
+            img: 'img/user.png',
+            num: '18',
+            month: 'oct',
+            name: 'Startup ideas needs to be funded ',
+            p: 'By Khalil Uddin in Development ',
+            tx: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam ',
+            add: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde consequatur tempora repellat, voluptate pariatur vitae quo eum? Distinctio aperiam illo, incidunt nemo, ut, dicta deserunt facilis at ullam laudantium voluptates.',
+            more: 'read more'
+        },{
+            img: 'img/ideas.png',
+            num: '18',
+            month: 'oct',
+            name: 'User Interface Designing Elements ',
+            p: 'By Khalil Uddin in Development ',
+            tx: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor idunt ut labore et dolore aliquyam ',
+            add: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde consequatur tempora repellat, voluptate pariatur vitae quo eum? Distinctio aperiam illo, incidunt nemo, ut, dicta deserunt facilis at ullam laudantium voluptates.',
+            more: 'read more'
+        }
+    ];
+
+mixin bottomcard (items)
+    .bottomcards
+        for item in items 
+            .blog
+                img(src=item.img)
+                .blogtx
+                    .blogtitle
+                        .blogdate
+                            strong #{item.num}
+                            span #{item.month}
+                        .txtitle 
+                            h4 #{item.name}
+                            p #{item.p}
+                    p #{item.tx}
+                    p.txmore #{item.add}
+                    a(href='#').readmore #{item.more}
+-
+    let logo = [
+        {
+            img: 'img/brends/decorham.png',
+        },
+        {
+            img: 'img/brends/ratings.png',
+        },
+        {
+            img: 'img/brends/malik.png',
+        },
+        {
+            img: 'img/brends/bcause.png',
+        },
+        {
+            img: 'img/brends/womgily.png'
+        },
+    ];
+
+mixin logoslide (items)
+    .logosliders 
+        for item in items 
+            img(src=item.img)
+-
+    let cont = [
+        {
+            img: 'img/icons/address.png',
+            name: 'adress',
+            first: '312, 7th Ave, New York',
+            second: 'NY 101200, United States of America'
+        },
+        {
+            img: 'img/icons/phone.png',
+            name: 'Hotline (24x7)',
+            first: '+65 0052 300, +65 88251 210', 
+            second: '+88 01723 511 340'
+        },
+        {
+            img: 'img/icons/email.png',
+            name: 'E-mail', 
+            first: 'shapedtheme@gmail.com', 
+            second: 'khalilkode@gmail.com'
+        }
+    ];
+
+mixin add (items)
+    .cont
+        for item in items 
+            .cardcont
+                .imgcont
+                    img(src=item.img)
+                    h4 #{item.name}
+                p #{item.first}
+                p #{item.second}
+-
+    let media = [
+        {
+            img: 'img/footer/facebookb.png'
+
+        },
+        {
+            img: 'img/footer/twitterb.png'
+
+        },
+        {
+            img: 'img/footer/googlePlusb.png'
+
+        },
+        {
+            img: 'img/footer/linkedinb.png'
+
+        }
+    ];
+
+mixin foot (items)
+    for item in items 
+        .media
+            img(src=item.img)
+
+
+
+

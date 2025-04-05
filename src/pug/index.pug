@@ -1,0 +1,122 @@
+include component/mixin
+doctype html
+html(lang="en")
+    head
+        include component/head
+        +printhead('startup')
+
+    body 
+
+        header.top#home
+            .wrapper 
+                .topmenu 
+                    .logo 
+                        h1 Startup 
+                    .burMenu
+                    .menu
+                        +menu(topmenu) 
+                .midtop 
+                    h1.welcome Welcome to startup 
+                    p Your Favourite Creative Agency Template
+                    a(href="#").butt get started
+        main.middle#services
+            .wrapper 
+                h2 Services
+                hr
+                p We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+                +offercards(cards)
+            .middlex#about 
+                .wrapper
+                    h2 About us
+                    hr
+                    p Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+                    .midtx 
+                        p.one Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
+                        p.two Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+                    .slider 
+                        +imgslide(slide)
+                        .arrowr.arrow 
+                            .arrowrb
+                        .arrowl.arrow 
+                            .arrowlb
+                        //slider js
+        .latestw#works 
+            .wrapper 
+                h2 Latest works
+                hr
+                +latestmenu(latest)
+
+                .works
+                    +workimg(work)
+
+        .mainbanner 
+            h2 Do you like OUR WORK so far? Let's talk about YOUR PROJECT!
+            a(href="#getInTouch").butt Get in Touch
+
+        .middbottom#blog 
+            h2 Recent blog posts
+            hr
+            p.blogp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+            +bottomcard(botcards)
+
+        .bottomslide#clients 
+            +logoslide(logo)
+            p.slide  Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+            p.john John Doe, Google Inc.
+            .dots
+                .dot.active
+                .dot.active
+                .dot.active
+
+        .contacts#contact
+            h2#getInTouch Get in touch
+            hr
+            p.contp Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+            .contactsmain 
+                .contact
+                    +add(cont)
+
+                form(action="#" method="post").form 
+                    .firstlevel 
+                        input(type="text" placeholder="your username" name="username")
+                        input(type="text" placeholder="your e-mail" name="e-mail")
+                    .secondlevel
+                        input(type="text" placeholder="your subject" name="subject")
+                        input(type="text" placeholder="company name" name="company")
+                    textarea(name="message" placeholder="write your message").txarea 
+                    .btnblock
+                        input(type="submit" value="send message" id="appload")
+                        p <span>*</span> We’ll contact you as as possible. We don’t reply on Monday.
+
+        .dialog 
+            .dialogbox
+                h3 Hi! Please fill in this form if you want to get a support)
+                form(action="#")
+
+                    label
+                        input(type="text" name="Lastname" id="lastname" required placeholder="Last name")
+                        span Last name
+
+                    label
+                        input(type="text" name="Firstname" id="firstname" required placeholder="Fist name") 
+                        span First name
+
+                    label
+                        input(type="text" name="number" id="phonenum" required placeholder="Number of phone") 
+                        span Number of phone
+
+                    .logswitch 
+                        strong(draggable="true")
+                        .dropzone
+
+                .mButt
+                    a(href="/").cor Confirm
+                    a(href="/").can Cancel
+
+        footer.footer#footer 
+            .socialfoot 
+                +foot(media)
+            hr.foot
+            p © 2015 Startup, Designed by ShapedTheme
+
+        script(src="js/scripts.js")             
