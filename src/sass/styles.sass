@@ -47,6 +47,9 @@ ul, li
 .burMenuOpen
     background-image: url(../img/icons/close.svg)
 
+    //+media(568px)
+        //display: none
+
 .burblock
     position: absolute
     display: block
@@ -58,7 +61,7 @@ ul, li
     //padding-top: 25vh
     margin: 0 10px 0
     background-color: $primaryred
-    
+
     ul
         flex-direction: column
         align-items: flex-end
@@ -321,6 +324,7 @@ ul, li
     flex-direction: column
     align-items: center
     justify-content: space-between
+
     +media (1024)
         flex-direction: row
 
@@ -345,7 +349,7 @@ ul, li
 
 .firstlevel input,
 .secondlevel input
-    width: 350px
+    width: 250px
     height: 45px
     border: 1px #555 solid
     color: #555
@@ -353,6 +357,9 @@ ul, li
     &:hover
         border: 1px #c0301c solid
         color: #c0301c
+
+    +media(568px)
+        width: 350px
 
 .form
     & input,
@@ -366,12 +373,16 @@ ul, li
 textarea
     min-height: 100px
     max-height: 100px
-    max-width: 730px
-    min-width: 730px
+    max-width: 250px
+    min-width: 250px
     padding-top: 15px
 
     border: 1px #555 solid
     color: #555
+
+    +media(568px)
+        max-width: 730px
+        min-width: 730px
 
     &:hover
         border: 1px #c0301c solid
@@ -382,6 +393,10 @@ textarea
 .btnblock
     display: flex
     align-items: center
+    flex-direction: column
+
+    +media(568px)
+        flex-direction: row
 
 .btnblock p
     color: #555
@@ -393,7 +408,7 @@ textarea
         color: $primaryred
 
 .btnblock input
-    width: 170px
+    width: 250px
     height: 45px
     background-color: transparent
     border: 1px #555 solid
@@ -404,6 +419,9 @@ textarea
     &:hover
         border: 1px #c0301c solid
         color: #c0301c
+
+    +media(568px)
+        width: 170px
 
 .cont
     display: flex
