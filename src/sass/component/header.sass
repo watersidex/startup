@@ -6,7 +6,10 @@
     background-image: url(../img/about/wall.jpg)
     background-position: center
     filter: contrast(120%)
-    background-size: 110%
+    background-size: 270%
+
+    +media(568)
+        background-size: 110%
 
     &:after
         content: ''
@@ -38,6 +41,10 @@ hr
     align-items: center
     color: white
     padding-bottom: 259px
+    +media(568)
+        justify-content: center
+    +media(740)
+        justify-content: space-around
 
 .logo h1
     font-size: 24px
@@ -45,6 +52,10 @@ hr
     margin: 0
     font-weight: 700
     font-family: "Montserrat"
+    +media(568)
+        display: none
+    +media(740)
+        display: block
 
 .menul
     display: flex
@@ -57,6 +68,10 @@ hr
 
 .menu li
     padding: 0 17px
+    +media(568)
+        padding: 0 7px
+    +media(740)
+        padding: 0 17px
 
 .menu a
     display: inline-block
@@ -73,12 +88,15 @@ hr
     padding-bottom: 260px
 
 .midtop h1
-    font-size: 48px
+    font-size: 25px
     padding-bottom: 40px
     text-transform: uppercase
     line-height: 24px
     font-weight: 400
     margin: 0
+
+    +media(568)
+        font-size: 48px
 
 .midtop p
     padding-bottom: 53px

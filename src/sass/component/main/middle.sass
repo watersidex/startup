@@ -34,23 +34,29 @@
 .middlex
     padding-top: 100px
     background-color: #f8f8f8
-    
 
 .midtx
     display: flex
     align-items: center
-    text-align: left
+    text-align: center
+
+    +media(568)
+        text-align: left
 
     & .one,
     & .two
-        padding-top: 74px
-        padding-bottom: 74px
+        padding: 50px 20px
+        +media(568)
+            padding-top: 74px
+            padding-bottom: 74px
 
     & .one
-        padding-right: 30px
+        +media(568)
+            padding-right: 30px
 
     & .two
-        padding-left: 30px
+        +media(568)
+            padding-left: 30px
 
 /*-----------SLIDER-----------*/
 
@@ -89,7 +95,7 @@
     border-bottom: 3px solid #f8f8f8
     rotate: (135deg)
 
-.arrowrb 
+.arrowrb
     rotate: (-45deg)
     left: 8px
 
