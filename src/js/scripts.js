@@ -132,11 +132,10 @@ let bur = document.querySelector(".burMenu")
 //let open = bur.classList.toggle("burMenuOpen")
 
 let menu = document.querySelector(".menu")
+let blur = document.querySelector(".blur")
 
 bur.onclick = () => {
     bur.classList.toggle("burMenuOpen")
     menu.classList.toggle("burblock")
-
-    //open.style.backgroungImage: ""
+    //open.style.backgroungImage: ""\
 }
-

@@ -35,6 +35,9 @@ ul, li
 .burMenu
 
     display: block
+    z-index: 3
+    text-align: left
+    //left: 280px
     width: 25rem
     height: 25rem
     //border: 5rem solid blue
@@ -45,26 +48,51 @@ ul, li
         display: none
 
 .burMenuOpen
+    z-index: 7
     background-image: url(../img/icons/close.svg)
 
     +media(568)
         display: none
 
-.burblock
-    position: absolute
+.blur
+    position: fixed
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    z-index: 1
+    backdrop-filter: blur(15px)
     display: block
-    top: 48px
-    right: -10px
-    width: 200px
-    height: max-content
+    justify-content: center
+    align-items: center
+
+    +media(568)
+        display: none
+
+.burblock
+    position: fixed
+    width: 100%
+    height: 100vh
+    top: 0
+    left: 0
+    z-index: 1
+    backdrop-filter: blur(15px)
+    display: block
+    justify-content: center
+    align-items: center
     z-index: 4
     //padding-top: 25vh
-    margin: 0 10px 0
-    background-color: $primaryred
 
     ul
+        display: flex
         flex-direction: column
-        align-items: flex-end
+        align-items: center
+
+    li
+        position: relative
+        top: 100px
+        padding: 25px 0 
+
 
 .adaptive
     flex-direction: column
@@ -269,7 +297,7 @@ ul, li
     background-image: url(../img/banner.png)
     height: 370px
     text-align: center
-    background-size: 110%
+    background-size: cover
 
     & h2
         color: white
@@ -498,7 +526,8 @@ textarea
     height: 100vh
     top: 0
     left: 0
-    backdrop-filter: blur(2px)
+    z-index: 6
+    backdrop-filter: blur(15px)
     display: none
     justify-content: center
     align-items: center
