@@ -53,9 +53,11 @@ hr
     font-weight: 700
     font-family: "Montserrat"
     +media(568)
-        display: none
-    +media(740)
-        display: block
+        font-size: 20px
+        padding-right: 20px
+
+    +media(615)
+        font-size: 24px
 
 .menul
     display: flex
@@ -69,9 +71,13 @@ hr
 .menu li
     padding: 0 17px
     +media(568)
+        padding: 0 4px
+
+    +media(600)
         padding: 0 7px
-    +media(740)
-        padding: 0 17px
+
+    +media(720)
+        padding: 0 15px
 
 .menu a
     display: inline-block
@@ -95,7 +101,7 @@ hr
     font-weight: 400
     margin: 0
 
-    +media(568)
+    +media(615)
         font-size: 48px
 
 .midtop p

@@ -93,6 +93,8 @@ ul, li
         top: 100px
         padding: 25px 0 
 
+    +media(568)
+        display: none
 
 .adaptive
     flex-direction: column
@@ -221,6 +223,10 @@ ul, li
 
         &:hover
             color: $primaryred
+    
+    +media(460)
+        overflow-x: hidden
+
 
 .workimg
     display: flex
@@ -411,7 +417,7 @@ ul, li
 .firstlevel input,
 .secondlevel input
     display: block
-    width: 250px
+    width: 200px
     height: 45px
     border: 1px #555 solid
     color: #555
@@ -423,7 +429,7 @@ ul, li
     +media(568)
         width: calc( 100% - 30px )
     +media(740)
-        width: 350px
+        width: 340px
 
 .form
     & input,
