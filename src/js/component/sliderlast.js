@@ -46,48 +46,95 @@ const quotes = [{
 
 class Slider {
     constructor(slidecont, slideSelector) {
-        this.slidecont = slidecont
+        this.slidecont = slidecont // Контейнер з карточками
         this.slidecont.style.position = "relative"
-        this.slideSelector = slideSelector
+        this.slideSelector = slideSelector // Назва CSS - класу однієї карточки 
         this.slides = this.slidecont.querySelectorAll(slideSelector)
-        this.slidecont.style.height = this.slidecont.getBoundingClientRect().height + "px"
-        this.sliderwidth = this.slidecont.getBoundingClientRect().width
-        this.slideWidth = this.slides[0].getBoundingClientRect().width
+        this.slidecont.style.height = this.slidecont.getBoundingClientRect().height + "px" // фіксуємо жорстко висоту слайдера 
+        this.sliderwidth = this.slidecont.getBoundingClientRect().width // ширина контейнера слайдера
+        this.slideWidth = this.slides[0].getBoundingClientRect().width // ширина карточки слайду
         this.slides.forEach(e => {
             e.style.position = "absolute"
         });
-        this.maxVisibleSlides = 4
+        this.fixedCardDist = 10
+        this.defaultVisibleSlides = 4 // Кількість слайдів які будуть показуватись фіксоване значення
+        //this.maxVisibleSlides = Math.floor(this.slidecont.getBoundingClientRect().width / this.slideWidth) // Відповідно ширини визначаємо кількість видимих слайдів
+        //if (this.maxVisibleSlides == 0) this.maxVisibleSlides = 1 // При мінімумі зажди буде 1 слайд
+        //if (this.maxVisibleSlides > this.defaultVisibleSlides) this.maxVisibleSlides = this.defaultVisibleSlides // При максимумі зажди буде значення за замовчуванням
+        this.getCardCount()
         this.place()
         this.move()
+    }
+
+    getCardCount() {
+        this.maxVisibleSlides = Math.floor(this.slidecont.getBoundingClientRect().width / this.slideWidth) // Відповідно ширини визначаємо кількість видимих слайдів
+        if (this.maxVisibleSlides == 0) this.maxVisibleSlides = 1 // При мінімумі зажди буде 1 слайд
+        if (this.maxVisibleSlides > this.defaultVisibleSlides) this.maxVisibleSlides = this.defaultVisibleSlides // При максимумі зажди буде значення за замовчуванням
     }
 
     trigger() {
         console.log("trigger")
     }
 
+    slideResize() {
+        clearInterval(this.slidertimer) // Вимкнути перемикання слайдеру
+        //this.maxVisibleSlides = Math.floor(this.slidecont.getBoundingClientRect().width / this.slideWidth) // Відповідно ширини визначаємо кількість видимих слайдів
+        //if (this.maxVisibleSlides == 0) this.maxVisibleSlides = 1 // При мінімумі зажди буде 1 слайд
+        //if (this.maxVisibleSlides > this.defaultVisibleSlides) this.maxVisibleSlides = this.defaultVisibleSlides // При максимумі зажди буде значення за замовчуванням
+        this.getCardCount()
+        this.sliderwidth = this.slidecont.getBoundingClientRect().width // перевизначаємо спільну ширину слайдера
+        this.place() // робимо розстановку
+        this.move()
+        console.log(this.maxVisibleSlides)
+    }
+
     place() {
-        this.carddist = this.sliderwidth - this.slideWidth * this.maxVisibleSlides
-        console.log(this.carddist / (this.maxVisibleSlides - 1))
-        console.log(this.slideWidth)
-        this.slides.forEach((e, index) => {
+        if (this.maxVisibleSlides > 1) { // Якщо більше однієї карточки, то йде розташування за цим принципом 
+            this.carddist = this.sliderwidth - this.slideWidth * this.maxVisibleSlides // розрахунок відступів між карточками
+            //console.log(this.carddist / (this.maxVisibleSlides - 1))
+            //console.log(this.slideWidth)
 
-            e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * index + "px"
+            this.slides.forEach((e, index) => {
+                // функція розташування карточок коли 2 і більше
+                e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * index + "px"
+                e.style.width = this.slideWidth + "px"
+            });
+        } else {
+            this.slides.forEach((e, index) => {
 
-        });
+                // функція розташування карточок коли одна карточка
+                e.style.left = (this.sliderwidth + this.fixedCardDist) * index + "px"
+                e.style.width = window.innerWidth - 15 + "px"
+            });
+
+        }
+
     }
 
     move() {
         this.slidertimer = setInterval(() => {
             let phantomsl = this.slides[0].cloneNode(true)
-            phantomsl.style.left = (this.slideWidth + this.carddist / this.maxVisibleSlides) * this.slides.length + (this.carddist /( this.maxVisibleSlides - 1)) + "px"
+            if (this.maxVisibleSlides > 1) {
+                phantomsl.style.left = (this.slideWidth + this.carddist / this.maxVisibleSlides) * this.slides.length + (this.carddist / (this.maxVisibleSlides - 1)) + "px"
+            } else {
+                phantomsl.style.left = (this.slideWidth + this.fixedCardDist) * this.slides.length + this.fixedCardDist + "px"
+            }
             this.slidecont.appendChild(phantomsl)
             this.slides.forEach((e, index) => {
-                e.style.left = (e.getBoundingClientRect().width + this.carddist / (this.maxVisibleSlides - 1)) * (index - 1) + "px"
+                if (this.maxVisibleSlides > 1) {
+                    e.style.left = (e.getBoundingClientRect().width + this.carddist / (this.maxVisibleSlides - 1)) * (index - 1) + "px"
+                } else {
+                    e.style.left = (e.getBoundingClientRect().width + this.fixedCardDist) * (index - 1) + "px"
+                }
             });
 
             this.trigger()
+            if (this.maxVisibleSlides > 1) {
+                phantomsl.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length - 1) + "px"
+            } else {
+                phantomsl.style.left = (this.slideWidth + this.fixedCardDist) * (this.slides.length - 1) + "px"
+            }
 
-            phantomsl.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length - 1) + "px"
             setTimeout(() => {
                 this.slides[0].remove()
                 this.slides = this.slidecont.querySelectorAll(this.slideSelector)
@@ -109,15 +156,15 @@ class EmpSlider extends Slider {
         let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
 
         arrayphantom.forEach((element, index) => {
-            element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length + index ) + "px"
+            element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length + index) + "px"
             element.classList.add("phantom")
             slidecont.appendChild(element)
-            setTimeout(() => {                
-                element.style.left = (this.slideWidth+ this.carddist / (this.maxVisibleSlides - 1)) * (index + 2) + "px"
+            setTimeout(() => {
+                element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 2) + "px"
             }, 10);
         });
         this.slides.forEach((e, index) => {
-            setTimeout(() => {  
+            setTimeout(() => {
                 e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index - 3) + "px"
             }, 10);
         });
@@ -137,12 +184,12 @@ class EmpSlider extends Slider {
         arrayphantom.forEach((element, index) => {
             element.style.left = -(this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 1) + "px"
             slidecont.insertAdjacentElement("afterbegin", element)
-            setTimeout(() => {                
+            setTimeout(() => {
                 element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (2 - index) + "px"
             }, 10);
         });
         this.slides.forEach((e, index) => {
-            setTimeout(() => {                
+            setTimeout(() => {
                 e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 3) + "px"
             }, 10);
         });
@@ -177,12 +224,13 @@ class EmpSlider extends Slider {
 
 class Quotes extends Slider {
     constructor(slidecont, quotes) {
-        super(slidecont, "img")
+        super(slidecont, ".logobx")
         this.quotes = quotes
         this.activeQuote = 0
 
         clearInterval(this.slidertimer)
-        this.maxVisibleSlides = 5
+        this.defaultVisibleSlides = 5
+        this.getCardCount()
         this.place()
         this.move()
 
@@ -240,3 +288,9 @@ let slideqcont = document.querySelector(".logosliders")
 let qslide = new Quotes(slideqcont, quotes)
 qslide.setDots(".dots")
 qslide.setQuotes(".bottomslide")
+
+
+window.onresize = () => {
+    emp.slideResize()
+    qslide.slideResize()
+}

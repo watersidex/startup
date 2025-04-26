@@ -262,7 +262,8 @@ mixin bottomcard (items)
 mixin logoslide (items)
     .logosliders 
         for item in items 
-            img(src=item.img)
+            .logobx 
+                img(src=item.img)
 -
     let cont = [
         {

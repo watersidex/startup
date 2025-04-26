@@ -91,10 +91,20 @@ ul, li
     li
         position: relative
         top: 100px
-        padding: 25px 0 
+        padding: 25px 0
 
     +media(568)
-        display: none
+        //display: none
+        position: static
+        width: auto
+        height: auto
+        backdrop-filter: blur(0px)
+
+        ul
+            flex-direction: row
+
+        li
+            top: 0
 
 .adaptive
     flex-direction: column
@@ -209,7 +219,7 @@ ul, li
     width: 100%
     overflow-x: scroll
     display: flex
-    justify-content: center
+    //justify-content: center
     margin: 0
 
     & li
@@ -223,10 +233,10 @@ ul, li
 
         &:hover
             color: $primaryred
-    
-    +media(460)
-        overflow-x: hidden
 
+    +media(460)
+        justify-content: center
+        overflow-x: hidden
 
 .workimg
     display: flex
@@ -341,11 +351,15 @@ ul, li
     align-items: center
     justify-content: center
 
+.logobx
+    margin: 105px 0 75px 0
+    padding: 0 10px
+    transition: 1s all ease
+    max-width: 120px
+
     & img
         display: block
         width: 100px
-        margin: 105px 0 75px 0
-        transition: 1s all ease
 
 .slide
     color: #555
@@ -417,7 +431,7 @@ ul, li
 .firstlevel input,
 .secondlevel input
     display: block
-    width: 200px
+    width: 250px
     height: 45px
     border: 1px #555 solid
     color: #555
