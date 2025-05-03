@@ -111,8 +111,9 @@ class Slider {
 
     }
 
-    move() {
+    move() { //зміна розташування карточок, кожні 5 секунд
         this.slidertimer = setInterval(() => {
+            //створюємо фантом слайд,, визначаємо його розташування
             let phantomsl = this.slides[0].cloneNode(true)
             if (this.maxVisibleSlides > 1) {
                 phantomsl.style.left = (this.slideWidth + this.carddist / this.maxVisibleSlides) * this.slides.length + (this.carddist / (this.maxVisibleSlides - 1)) + "px"
@@ -120,6 +121,7 @@ class Slider {
                 phantomsl.style.left = (this.slideWidth + this.fixedCardDist) * this.slides.length + this.fixedCardDist + "px"
             }
             this.slidecont.appendChild(phantomsl)
+            //розміщення карточок в слайді (зсув)
             this.slides.forEach((e, index) => {
                 if (this.maxVisibleSlides > 1) {
                     e.style.left = (e.getBoundingClientRect().width + this.carddist / (this.maxVisibleSlides - 1)) * (index - 1) + "px"
@@ -128,14 +130,16 @@ class Slider {
                 }
             });
 
-            this.trigger()
+            this.trigger() // при потребі викликаємо трігер
+
+            // зміщення фантом слайду
             if (this.maxVisibleSlides > 1) {
                 phantomsl.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length - 1) + "px"
             } else {
                 phantomsl.style.left = (this.slideWidth + this.fixedCardDist) * (this.slides.length - 1) + "px"
             }
 
-            setTimeout(() => {
+            setTimeout(() => { //прибираємо інші слайди з поза зони видимості
                 this.slides[0].remove()
                 this.slides = this.slidecont.querySelectorAll(this.slideSelector)
 
@@ -147,27 +151,64 @@ class Slider {
 class EmpSlider extends Slider {
     constructor(slidecont) {
         super(slidecont, ".divsl")
+        slidecont.addEventListener("touchstart", this.touchslStart);
+        slidecont.addEventListener("touchend", this.touchslEnd);
+        slidecont.addEventListener("touchmove", this.touchslMove);
     }
 
+    touchslStart = (event) => {
+        //console.log("start")
+        //console.dir(event.touches[0].pageX)
+        this.startX = event.touches[0].pageX
+    }
+
+    touchslEnd = (event) => {
+        console.log("end")
+        if (this.moveX >= this.startX) {
+            console.log("touchL")
+            this.move3L()
+        } else {
+            console.log("touchR")
+            this.move3R()
+        }
+    }
+
+    touchslMove = (event) => {
+        //console.log("move")
+        //console.dir(event.touches[0].pageX)
+        this.moveX = event.touches[0].pageX
+    }
+
+    // захист від повторних кліків по кнопкам (L/R)
     clickProtector = false
 
+    // зсув (на 3 слайди) в ліву сторону, при натисканні на кнопку
     move3L = () => {
         clearInterval(this.slidertimer)
+
+        // створення масиву фантомів, 3
         let arrayphantom = [this.slides[0].cloneNode(true), this.slides[1].cloneNode(true), this.slides[2].cloneNode(true)]
 
+        // розташування фантом слайдів
         arrayphantom.forEach((element, index) => {
             element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length + index) + "px"
             element.classList.add("phantom")
             slidecont.appendChild(element)
+
+            // зсув фантомів
             setTimeout(() => {
                 element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 2) + "px"
             }, 10);
         });
+
+        // зсув видимих слайдів
         this.slides.forEach((e, index) => {
             setTimeout(() => {
                 e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index - 3) + "px"
             }, 10);
         });
+
+        // ремув слайдів за зоною видимості
         setTimeout(() => {
             this.slides[0].remove()
             this.slides[1].remove()
@@ -178,6 +219,8 @@ class EmpSlider extends Slider {
         }, 2000)
     }
 
+
+    // сейм зміщення на 3 слайди, але в праву сторону
     move3R = () => {
         clearInterval(this.slidertimer)
         let arrayphantom = [this.slides[this.slides.length - 1].cloneNode(true), this.slides[this.slides.length - 2].cloneNode(true), this.slides[this.slides.length - 3].cloneNode(true)]
@@ -242,6 +285,27 @@ class Quotes extends Slider {
         this.DotCont = DotCont
         this.activeDot = 0
         dots[0].classList.add("active")
+        this.dots.forEach(
+            (dot, index) => {
+                dot.onclick = () => {
+                    //console.log('switch quote')
+                    clearInterval(this.slidertimer)
+                    this.quotesl.style.opacity = "0"
+                    this.authorsl.style.opacity = "0"
+                    this.dots[this.activeDot].classList.remove("active")
+                    setTimeout(() => {
+                        this.quotesl.innerHTML = (this.quotes[index].quote)
+                        this.authorsl.innerHTML = (this.quotes[index].author)
+                        this.quotesl.style.opacity = "1"
+                        this.authorsl.style.opacity = "1"
+                        this.activeDot = index
+                        dots[index].classList.add("active")
+                        this.move()
+                    }, 500)
+
+                }
+            }
+        )
     }
     trigger() {
         this.dots[this.activeDot].classList.remove("active")
