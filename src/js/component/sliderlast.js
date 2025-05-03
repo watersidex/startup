@@ -56,7 +56,7 @@ class Slider {
         this.slides.forEach(e => {
             e.style.position = "absolute"
         });
-        this.fixedCardDist = 10
+        this.fixedCardDist = 100
         this.defaultVisibleSlides = 4 // Кількість слайдів які будуть показуватись фіксоване значення
         //this.maxVisibleSlides = Math.floor(this.slidecont.getBoundingClientRect().width / this.slideWidth) // Відповідно ширини визначаємо кількість видимих слайдів
         //if (this.maxVisibleSlides == 0) this.maxVisibleSlides = 1 // При мінімумі зажди буде 1 слайд
@@ -164,12 +164,19 @@ class EmpSlider extends Slider {
 
     touchslEnd = (event) => {
         console.log("end")
-        if (this.moveX >= this.startX) {
-            console.log("touchL")
-            this.move3L()
-        } else {
-            console.log("touchR")
-            this.move3R()
+        if (this.moveX - this.startX > 50 || this.moveX - this.startX < -50 ) {
+            if (this.clickProtector == false) {
+                this.clickProtector = true
+                if (this.moveX < this.startX) {
+                    console.log("touchL")
+                    clearInterval(this.slidertimer)
+                    this.move3L()
+                } else {
+                    console.log("touchR")
+                    clearInterval(this.slidertimer)
+                    this.move3R()
+                }
+            }
         }
     }
 
@@ -191,20 +198,32 @@ class EmpSlider extends Slider {
 
         // розташування фантом слайдів
         arrayphantom.forEach((element, index) => {
-            element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length + index) + "px"
+            if (this.maxVisibleSlides > 1) {
+                element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (this.slides.length + index) + "px"
+            } else {
+                element.style.left = (this.slideWidth + this.fixedCardDist) * (this.slides.length + index) + "px"
+            }
             element.classList.add("phantom")
             slidecont.appendChild(element)
 
             // зсув фантомів
             setTimeout(() => {
-                element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 2) + "px"
+                if (this.maxVisibleSlides > 1) {
+                    element.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index + 2) + "px"
+                } else {
+                    element.style.left = (this.slideWidth + this.fixedCardDist) * (index + 2) + "px"
+                }
             }, 10);
         });
-
+        
         // зсув видимих слайдів
         this.slides.forEach((e, index) => {
             setTimeout(() => {
-                e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index - 3) + "px"
+                if (this.maxVisibleSlides > 1) {
+                    e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * (index - 3) + "px"
+                } else {
+                    e.style.left = (this.slideWidth + this.fixedCardDist) * (index - 3) + "px"
+                }
             }, 10);
         });
 
