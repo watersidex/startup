@@ -83,6 +83,7 @@ class Slider {
         //if (this.maxVisibleSlides > this.defaultVisibleSlides) this.maxVisibleSlides = this.defaultVisibleSlides // При максимумі зажди буде значення за замовчуванням
         this.getCardCount()
         this.sliderwidth = this.slidecont.getBoundingClientRect().width // перевизначаємо спільну ширину слайдера
+
         this.place() // робимо розстановку
         this.move()
         console.log(this.maxVisibleSlides)
@@ -93,7 +94,8 @@ class Slider {
             this.carddist = this.sliderwidth - this.slideWidth * this.maxVisibleSlides // розрахунок відступів між карточками
             //console.log(this.carddist / (this.maxVisibleSlides - 1))
             //console.log(this.slideWidth)
-
+        let x = document.querySelector(".service-message")
+        x.innerHTML = "<b>sliderwidth: </b>" + this.sliderwidth
             this.slides.forEach((e, index) => {
                 // функція розташування карточок коли 2 і більше
                 e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * index + "px"
