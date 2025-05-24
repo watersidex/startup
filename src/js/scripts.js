@@ -102,17 +102,27 @@ let workcards = document.querySelectorAll(".workcard")
 ltmenu.forEach(element => {
     element.onclick = (e) => {
         e.preventDefault()
-        if (element.innerText == "All") {
-            workcards.forEach(workcard => workcard.style.display = "block")
-        } else {
-            workcards.forEach(workcard => {
-                workcard.style.display = element.innerText == workcard.querySelector("p").innerText ? "block" : "none"
-            })
-
-        }
+        showltw(element.innerText)
+        localStorage.setItem("headerltw", element.innerText)
 
     }
 })
+
+let showltw = (choice) => {
+    if (choice == "All") {
+        workcards.forEach(workcard => workcard.style.display = "block")
+    } else {
+        workcards.forEach(workcard => {
+            workcard.style.display = choice == workcard.querySelector("p").innerText ? "block" : "none"
+        })
+
+    }
+}
+
+if (localStorage.getItem("headerltw")) {
+    let headerltw = localStorage.getItem("headerltw")
+    showltw(headerltw)
+}
 
 /*-----------READ MORE-----------*/
 
@@ -136,6 +146,13 @@ let blur = document.querySelector(".blur")
 
 bur.onclick = () => {
     bur.classList.toggle("burMenuOpen")
+    document.body.style.overflow = (bur.classList.contains("burMenuOpen")) ? "hidden" : "auto"
     menu.classList.toggle("burblock")
     //open.style.backgroungImage: ""\
+}
+
+menu.onclick = () => {
+    document.body.style.overflow = "auto"
+    bur.classList.remove("burMenuOpen")
+    menu.classList.remove("burblock")
 }

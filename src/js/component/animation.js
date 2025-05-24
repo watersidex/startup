@@ -26,4 +26,4 @@ window.onscroll = () => {
             myobj[index].firstElementChild.style.transform = 'translateX (0px)'
         }
     })
-}
+} 

@@ -86,7 +86,7 @@ class Slider {
 
         this.place() // робимо розстановку
         this.move()
-        console.log(this.maxVisibleSlides)
+        //console.log(this.maxVisibleSlides)
     }
 
     place() {
@@ -94,8 +94,8 @@ class Slider {
             this.carddist = this.sliderwidth - this.slideWidth * this.maxVisibleSlides // розрахунок відступів між карточками
             //console.log(this.carddist / (this.maxVisibleSlides - 1))
             //console.log(this.slideWidth)
-            let x = document.querySelector(".service-message")
-            x.innerHTML = "<b>sliderwidth: </b>" + this.sliderwidth
+            /*let x = document.querySelector(".service-message")
+            x.innerHTML = "<b>sliderwidth: </b>" + this.sliderwidth*/
             this.slides.forEach((e, index) => {
                 // функція розташування карточок коли 2 і більше
                 e.style.left = (this.slideWidth + this.carddist / (this.maxVisibleSlides - 1)) * index + "px"
@@ -169,16 +169,16 @@ class EmpSlider extends Slider {
     }
 
     touchslEnd = (event) => {
-        console.log("end")
+        //console.log("end")
         if (this.moveX - this.startX > 50 || this.moveX - this.startX < -50) {
             if (this.clickProtector == false) {
                 this.clickProtector = true
                 if (this.moveX < this.startX) {
-                    console.log("touchL")
+                    //console.log("touchL")
                     clearInterval(this.slidertimer)
                     this.move3L()
                 } else {
-                    console.log("touchR")
+                    //console.log("touchR")
                     clearInterval(this.slidertimer)
                     this.move3R()
                 }
@@ -403,7 +403,15 @@ class Quotes extends Slider {
     setQuotes(QuotesCont) {
         this.quotesl = document.querySelector(QuotesCont + " .slide")
         this.authorsl = document.querySelector(QuotesCont + " .john")
+        this.quotesl.onmouseenter = () => {
+            //console.log("stop switch sl")
+            clearInterval(this.slidertimer)
+        }
 
+        this.quotesl.onmouseleave = () => {
+            //console.log("start switch sl")
+            this.move()
+        }
     }
 }
 

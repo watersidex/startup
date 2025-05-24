@@ -1,18 +1,21 @@
-
 let btn = document.querySelector("#appload")
 let inputs = document.querySelectorAll(".contactsmain input")
 let tx = document.querySelector(".txarea")
 inputs.forEach(input => {
     if (localStorage.getItem(input.name)) {
         input.value = localStorage.getItem(input.name)
-        if (input.name!="e-mail") {
+        if (input.name != "e-mail") {
             input.onkeyup = function () {
-            input.value = input.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
-        }
+                input.value = input.value.replace(/[^A-Za-z А-Яа-яЄЇІєії]/g, "")
+            }
         }
     }
 
 })
+
+if (localStorage.getItem("msgtx")) {
+    tx.value = localStorage.getItem("msgtx")
+}
 
 btn.onclick = (event) => {
     event.preventDefault()
@@ -27,18 +30,20 @@ btn.onclick = (event) => {
     inputs.forEach(input => {
         if (input.name) {
             localStorage.setItem(input.name, input.value)
-            let newp = document.createElement ('p')
+            let newp = document.createElement('p')
             newp.innerHTML = `${input.name} <em> ${input.value} </em>`
             newdialog.appendChild(newp)
         }
     })
 
-    let newtx = document.createElement ('p')
+    localStorage.setItem("msgtx", tx.value)
+
+    let newtx = document.createElement('p')
     newtx.innerHTML = `${tx.name} <em> ${tx.value} </em>`
     newdialog.appendChild(newtx)
     newter.onclick = (event) => {
         newter.style.display = 'none'
-        newter.remove ()
+        newter.remove()
         event.cancelBubble = true
     }
 
@@ -54,7 +59,7 @@ btn.onclick = (event) => {
     conf.classList.add('cor')
     mbutt.appendChild(conf)
     conf.innerText = 'confirm'
-    
+
     let canc = document.createElement('a')
     canc.classList.add('can')
     mbutt.appendChild(canc)
@@ -62,21 +67,21 @@ btn.onclick = (event) => {
 
     canc.onclick = () => {
         newter.style.display = "none"
-        newter.remove ()
+        newter.remove()
     }
 
     conf.onclick = (event) => {
         let params = '?'
-        inputs.forEach( (element,index) => {
+        inputs.forEach((element, index) => {
             params += `${(index==0?'':"&")}${element.name}=${element.value}`;
         });
         params += `&message=${tx.value}`
         alert(params)
         newdialog.querySelector('h3').innerHTML = "message sent"
-        newdialog.querySelectorAll('p').forEach (e => e.remove())
+        newdialog.querySelectorAll('p').forEach(e => e.remove())
         conf.style.display = "none"
         canc.innerText = 'OK'
-        let mytimer = setTimeout (canc.onclick, 7000)
-        fetch('http://localhost/dolphintg.php'+params).then(response=>console.log(response))
+        let mytimer = setTimeout(canc.onclick, 7000)
+        fetch('http://localhost/dolphintg.php' + params).then(response => console.log(response))
     }
 }

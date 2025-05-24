@@ -10,4 +10,4 @@ paralaks.forEach(element => {
         let shiftY = event.y * 100 / window.innerHeight
         element.style.backgroundPosition = shiftX + '% ' + shiftY + '%'
     }
-});
+}); 

@@ -4,12 +4,14 @@
     position: relative
     color: white
     background-image: url(../img/about/wall.jpg)
+    height: 100vh
     background-position: center
     filter: contrast(120%)
     background-size: 270%
 
     +media(568)
         background-size: 110%
+        height: auto
 
     &:after
         content: ''
@@ -35,12 +37,15 @@ hr
     border: 1px #555 solid
 
 .topmenu
-    position: relative
+    position: fixed
+    width: 100%
+    top: 0
+    left: 0
+    padding: 20px 0 
     display: flex
     justify-content: space-around
     align-items: center
     color: white
-    padding-bottom: 259px
     +media(568)
         justify-content: center
     +media(740)
@@ -95,6 +100,7 @@ hr
 
 .midtop h1
     font-size: 25px
+    padding-top: 259px
     padding-bottom: 40px
     text-transform: uppercase
     line-height: 24px
