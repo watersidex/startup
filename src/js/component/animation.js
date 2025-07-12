@@ -13,7 +13,7 @@ window.onload = () => {
             e.firstElementChild.style.transform = 'translateX (-90px)'
         }
     })
-    console.log(scrollobjY)
+    console.log(scrollobjY) 
 }
 
 window.onscroll = () => {

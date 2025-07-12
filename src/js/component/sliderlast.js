@@ -20,7 +20,7 @@ const quotes = [{
     },
     {
         quote: "The only way to do great work is to love what you do.",
-        author: "Steve Jobs"
+        author: "Steve Jobs" 
     },
     {
         quote: "Happiness depends upon ourselves.",

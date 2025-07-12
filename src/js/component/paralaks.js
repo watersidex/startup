@@ -1,4 +1,4 @@
-/*-----------TOP & MAIN-----------*/
+/*-----------TOP & MAIN-----------*/ 
 
 let topp = document.querySelector('.top')
 let mainn = document.querySelector('.mainbanner')

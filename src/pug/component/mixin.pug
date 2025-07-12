@@ -13,7 +13,7 @@
             name: 'Works ',
             url: '#works'
             },{
-            name: 'Blog ',
+            name: 'Blog ', 
             url: '#blog'
             },{
             name: 'Clients ',
@@ -211,7 +211,8 @@ mixin workimg (items)
             p: 'By Khalil Uddin in Development ',
             tx: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam ',
             add: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde consequatur tempora repellat, voluptate pariatur vitae quo eum? Distinctio aperiam illo, incidunt nemo, ut, dicta deserunt facilis at ullam laudantium voluptates.',
-            more: 'read more'
+            more: 'read more'/*,
+            close: 'close text'*/
         },{
             img: 'img/ideas.png',
             num: '18',
@@ -220,7 +221,8 @@ mixin workimg (items)
             p: 'By Khalil Uddin in Development ',
             tx: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor idunt ut labore et dolore aliquyam ',
             add: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde consequatur tempora repellat, voluptate pariatur vitae quo eum? Distinctio aperiam illo, incidunt nemo, ut, dicta deserunt facilis at ullam laudantium voluptates.',
-            more: 'read more'
+            more: 'read more'/*,
+            close: 'close text'*/
         }
     ];
 
@@ -239,6 +241,7 @@ mixin bottomcard (items)
                             p #{item.p}
                     p #{item.tx}
                     p.txmore #{item.add}
+                    //p.close #{item.close}
                     a(href='#').readmore #{item.more}
 -
     let logo = [

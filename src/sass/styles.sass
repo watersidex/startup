@@ -197,6 +197,9 @@ ul, li
 .txmore
     display: none
 
+/*.close 
+    display: none*/
+
 .txshow
     display: block
 
@@ -351,6 +354,7 @@ ul, li
 .logobx
     margin: 105px 0 75px 0
     padding: 0 10px
+    box-sizing: border-box
     transition: 1s all ease
     max-width: 120px
 
@@ -550,15 +554,18 @@ textarea
     align-items: center
 
 .dialogbox
-    width: 350px
+    width: 250px
     //height: 400px
     background-color: white
     color: #7b241c
     margin: 0 auto
     margin-top: 50px
-    padding: 15px
+    padding: 15px 25px
     border: 1px solid #7b241c
     text-align: center
+
+    +media(425)
+        width: 350px
 
     & h3
         color: #7b241c
@@ -587,7 +594,7 @@ textarea
         display: flex
         align-items: center
         justify-content: space-around
-        margin-top: 10px
+        margin: 10px 0 43px 0
 
         a
             margin-top: 25px

@@ -24,7 +24,7 @@ btn.onclick = (event) => {
     newter.style.display = 'block'
     document.body.appendChild(newter)
     let newdialog = document.createElement('form')
-    newdialog.classList.add('dialogbox')
+    newdialog.classList.add('dialogbox') 
     newter.appendChild(newdialog)
     newdialog.innerHTML = '<h3>Check your data</h3>'
     inputs.forEach(input => {

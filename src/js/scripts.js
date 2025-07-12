@@ -128,11 +128,15 @@ if (localStorage.getItem("headerltw")) {
 
 let readmore = document.querySelectorAll(".readmore")
 let txmore = document.querySelectorAll(".txmore")
+let close = document.querySelectorAll(".close")
 
 readmore.forEach((element, index) => {
     element.onclick = (e) => {
         e.preventDefault()
         txmore[index].classList.toggle("txshow")
+        /*close.style.display = "block"*/
+        element.innerText = 'close the text'
+        return
     }
 })
 
