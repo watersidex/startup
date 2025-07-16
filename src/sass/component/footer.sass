@@ -5,7 +5,7 @@
     height: 307px
     width: 100%
     color: white
-    padding-top: 100px 
+    padding-top: 100px
     background-color: $primaryred
 
     & p
@@ -19,7 +19,6 @@
 .foot
     width: 50px
     border: 1px #fff solid
-
 
 .socialfoot
     display: flex
@@ -35,3 +34,36 @@
 
     &:hover
         transform: scale(1.1)
+
+        .social
+            display: flex
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            top: 185px
+            opacity: 0
+            transition: 0.5s all ease
+
+.link
+    display: block
+    margin: 0 5px
+    width: 30px
+    height: 30px
+    background-position: center
+    background-repeat: no-repeat
+    transition: $transition
+
+    &:hover
+        background-color: $primaryred
+
+.facebook
+    background-image: url(../img/links/facebook.png)
+
+.twitter
+    background-image: url(../img/links/twitter.png)
+
+.googlePlus
+    background-image: url(../img/links/googlePlus.png)
+
+.linkedIn
+    background-image: url(../img/links/linkedIn.png)

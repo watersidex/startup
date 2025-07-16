@@ -135,7 +135,7 @@ readmore.forEach((element, index) => {
         e.preventDefault()
         txmore[index].classList.toggle("txshow")
         /*close.style.display = "block"*/
-        element.innerText = 'close the text'
+        element.innerText = (element.innerText.toLowerCase() == 'close the text')? 'read more' : 'close the text'
         return
     }
 })
