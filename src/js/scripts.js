@@ -4,12 +4,14 @@ let logdialog = document.querySelector(".dialog")
 let butt = document.querySelector(".butt")
 let can = document.querySelector(".can")
 
-butt.onclick = () => {
+butt.onclick = (event) => {
     logdialog.style.display = "flex"
+    event.preventDefault()
 }
 
-can.onclick = () => {
+can.onclick = (event) => {
     logdialog.style.display = "none"
+    event.preventDefault()
 }
 
 /*-----------DIALOGBOX-----------*/
@@ -25,6 +27,38 @@ dropzone.ondragover = () => {
     logswitch.style.backgroundColor = "white"
     dropzone.appendChild(logswitch)
 }
+
+let movetouch = 0
+
+let touchendX = 0
+
+logswitch.ontouchstart = (touches) => {
+    movetouch = touches.touches[0].pageX
+}
+
+logswitch.ontouchend = (touches) => {
+    if ((touchendX - movetouch >= logswitch.parentElement.getBoundingClientRect().width - 50) && (touchendX - movetouch <= logswitch.parentElement.getBoundingClientRect().width - 30)) {
+        dropzone.parentElement.style.backgroundColor = "#7b241c"
+        logswitch.style.top = "2px"
+        logswitch.style.backgroundColor = "white"
+        dropzone.appendChild(logswitch)
+        logswitch.style.left = "0px" 
+        logswitch.ontouchmove = null
+        logswitch.ontouchend = null
+        logswitch.ontouchstart = null
+    } else {
+        logswitch.style.left = "5px"
+    }
+}
+
+logswitch.ontouchmove = (touches) => {
+    console.log(touches.touches[0].pageX)
+    if (touches.touches[0].pageX - movetouch >= 5 && touches.touches[0].pageX - movetouch <= logswitch.parentElement.getBoundingClientRect().width - 30) {
+        logswitch.style.left = touches.touches[0].pageX - movetouch + "px"
+        touchendX = touches.touches[0].pageX
+    }
+}
+
 
 let cor = document.querySelector(".cor")
 let welcome = document.querySelector(".welcome")
@@ -135,7 +169,7 @@ readmore.forEach((element, index) => {
         e.preventDefault()
         txmore[index].classList.toggle("txshow")
         /*close.style.display = "block"*/
-        element.innerText = (element.innerText.toLowerCase() == 'close the text')? 'read more' : 'close the text'
+        element.innerText = (element.innerText.toLowerCase() == 'close the text') ? 'read more' : 'close the text'
         return
     }
 })

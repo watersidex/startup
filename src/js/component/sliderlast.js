@@ -45,11 +45,15 @@ const quotes = [{
 
 
 class Slider {
+    staticsl = []
     constructor(slidecont, slideSelector) {
         this.slidecont = slidecont // Контейнер з карточками
         this.slidecont.style.position = "relative"
         this.slideSelector = slideSelector // Назва CSS - класу однієї карточки 
         this.slides = this.slidecont.querySelectorAll(slideSelector)
+        this.slides.forEach(element => {
+            this.staticsl.push(element)
+        });
         this.slidecont.style.height = this.slidecont.getBoundingClientRect().height + "px" // фіксуємо жорстко висоту слайдера 
         this.sliderwidth = this.slidecont.getBoundingClientRect().width // ширина контейнера слайдера
         this.slideWidth = this.slides[0].getBoundingClientRect().width // ширина карточки слайду
@@ -78,14 +82,20 @@ class Slider {
 
     slideResize() {
         clearInterval(this.slidertimer) // Вимкнути перемикання слайдеру
+        clearTimeout(this.resizetimer)
+        this.slidecont.style.opacity = "0"
+        this.slidecont.style.transition = "1s all ease"
         //this.maxVisibleSlides = Math.floor(this.slidecont.getBoundingClientRect().width / this.slideWidth) // Відповідно ширини визначаємо кількість видимих слайдів
         //if (this.maxVisibleSlides == 0) this.maxVisibleSlides = 1 // При мінімумі зажди буде 1 слайд
         //if (this.maxVisibleSlides > this.defaultVisibleSlides) this.maxVisibleSlides = this.defaultVisibleSlides // При максимумі зажди буде значення за замовчуванням
-        this.getCardCount()
-        this.sliderwidth = this.slidecont.getBoundingClientRect().width // перевизначаємо спільну ширину слайдера
+        this.resizetimer = setTimeout(() => {
+            this.getCardCount()
+            this.sliderwidth = this.slidecont.getBoundingClientRect().width // перевизначаємо спільну ширину слайдера
+            this.slidecont.style.opacity = "1"
+            this.place() // робимо розстановку
+            this.move()
+        }, 1500)
 
-        this.place() // робимо розстановку
-        this.move()
         //console.log(this.maxVisibleSlides)
     }
 
@@ -123,6 +133,23 @@ class Slider {
         }, 5000)
     }
 
+    checkdub() {
+        //console.log("hi")
+        this.staticsl.forEach(staticslide => {
+            let dublicate = 0
+            this.slides.forEach(element => {
+                if (staticslide.children[0].src == element.children[0].src) {
+                    dublicate++
+                }
+                if (dublicate >= 2) {
+                    //alert("dublicate")
+                    slidecont.firstChild.remove()
+                    this.slides = this.slidecont.querySelectorAll(this.slideSelector)
+                }
+            });
+        });
+    }
+
     moveL() {
         //створюємо фантом слайд,, визначаємо його розташування
         let phantomsl = this.slides[0].cloneNode(true)
@@ -153,7 +180,7 @@ class Slider {
         setTimeout(() => { //прибираємо інші слайди з поза зони видимості
             this.slides[0].remove()
             this.slides = this.slidecont.querySelectorAll(this.slideSelector)
-
+            this.checkdub()
         }, 2000)
     }
 }
